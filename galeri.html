@@ -1,35 +1,703 @@
 <!DOCTYPE html>
+
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eskisi / Yenisi - Galeri</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="index.html">Anasayfa</a></li>
-                <li><a href="galeri.html">Eskisi / Yenisi</a></li>
-            </ul>
-        </nav>
-    </header>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Öncesi / Sonrası Galeri – Boyanıyo Kaporta</title>
 
-    <main>
-        <h1>Eskisi / Yenisi Uygulamalarımız</h1>
-        <div class="gallery-container">
-            <div class="car-comparison">
-                <figure>
-                    <img src="araba1_eski.jpg" alt="Araba 1 Eski">
-                    <figcaption>Eski Hali</figcaption>
-                </figure>
-                <figure>
-                    <img src="araba1_yeni.jpg" alt="Araba 1 Yeni">
-                    <figcaption>Yeni Hali</figcaption>
-                </figure>
-            </div>
-            </div>
-    </main>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #0F1923;
+      --navy-mid: #162130;
+      --orange: #FF6B1A;
+      --orange-dark: #D94F00;
+      --cream: #F5F0E8;
+      --steel: #8A9BA8;
+      --white: #FFFFFF;
+      --card-bg: #1A2838;
+    }
+
+    body {
+      background: var(--navy);
+      color: var(--cream);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      height: 68px;
+      padding: 0 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(15,25,35,0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,107,26,0.15);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      width: 38px;
+      height: 38px;
+      background: var(--orange);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-icon svg {
+      width: 22px;
+      height: 22px;
+      fill: white;
+    }
+
+    .logo-text {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      letter-spacing: 2px;
+      color: var(--white);
+    }
+
+    .logo-text span { color: var(--orange); }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+
+    nav a {
+      color: var(--steel);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: var(--orange);
+    }
+
+    .nav-cta {
+      background: var(--orange);
+      color: white !important;
+      padding: 8px 18px;
+      border-radius: 4px;
+      font-weight: 700;
+    }
+
+    .nav-cta:hover {
+      background: var(--orange-dark);
+    }
+
+    .gallery-hero {
+      min-height: 58vh;
+      padding: 140px 5% 80px;
+      position: relative;
+      background:
+        linear-gradient(135deg, rgba(15,25,35,0.96), rgba(15,25,35,0.78)),
+        radial-gradient(circle at 75% 40%, rgba(255,107,26,0.18), transparent 35%);
+      overflow: hidden;
+    }
+
+    .gallery-hero::after {
+      content: '';
+      position: absolute;
+      right: -120px;
+      top: 110px;
+      width: 520px;
+      height: 260px;
+      border: 1px solid rgba(255,107,26,0.18);
+      border-radius: 999px;
+      transform: rotate(-12deg);
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      background: rgba(255,107,26,0.12);
+      border: 1px solid rgba(255,107,26,0.35);
+      color: var(--orange);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      padding: 7px 15px;
+      border-radius: 30px;
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 7vw, 6rem);
+      line-height: 0.95;
+      letter-spacing: 2px;
+      color: var(--white);
+      max-width: 760px;
+      margin-bottom: 22px;
+    }
+
+    h1 span { color: var(--orange); }
+
+    .hero-sub {
+      color: var(--steel);
+      max-width: 590px;
+      font-size: 1rem;
+      margin-bottom: 34px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 26px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: 0.2s;
+    }
+
+    .btn-primary {
+      background: var(--orange);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--orange-dark);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      color: var(--cream);
+      border: 1px solid rgba(255,255,255,0.18);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--orange);
+      color: var(--orange);
+    }
+
+    section {
+      padding: 90px 5%;
+    }
+
+    .section-header {
+      margin-bottom: 44px;
+    }
+
+    .section-label {
+      color: var(--orange);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      color: var(--white);
+      letter-spacing: 2px;
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+
+    .section-sub {
+      color: var(--steel);
+      max-width: 560px;
+      font-size: 0.95rem;
+    }
+
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 32px;
+    }
+
+    .filter-pill {
+      border: 1px solid rgba(255,255,255,0.1);
+      color: var(--steel);
+      background: var(--card-bg);
+      padding: 9px 16px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .filter-pill.active {
+      background: var(--orange);
+      color: white;
+      border-color: var(--orange);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 20px;
+    }
+
+    .work-card {
+      grid-column: span 4;
+      background: var(--card-bg);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 10px;
+      overflow: hidden;
+      transition: transform 0.25s, border-color 0.25s;
+    }
+
+    .work-card.large {
+      grid-column: span 8;
+    }
+
+    .work-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255,107,26,0.35);
+    }
+
+    .media-wrap {
+      position: relative;
+      height: 260px;
+      background: linear-gradient(135deg, #243448, #101923);
+      overflow: hidden;
+    }
+
+    .work-card.large .media-wrap {
+      height: 360px;
+    }
+
+    .media-wrap img,
+    .media-wrap video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      opacity: 0.92;
+    }
+
+    .placeholder {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 30px;
+      color: rgba(245,240,232,0.55);
+      font-weight: 700;
+      letter-spacing: 0.6px;
+      background:
+        linear-gradient(135deg, rgba(255,107,26,0.16), transparent),
+        repeating-linear-gradient(
+          -45deg,
+          rgba(255,255,255,0.03) 0,
+          rgba(255,255,255,0.03) 8px,
+          transparent 8px,
+          transparent 16px
+        );
+    }
+
+    .tag {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: rgba(15,25,35,0.82);
+      color: var(--orange);
+      border: 1px solid rgba(255,107,26,0.25);
+      backdrop-filter: blur(8px);
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      padding: 5px 10px;
+      border-radius: 3px;
+    }
+
+    .play-badge {
+      position: absolute;
+      right: 14px;
+      top: 14px;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--orange);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      box-shadow: 0 10px 30px rgba(255,107,26,0.35);
+    }
+
+    .work-info {
+      padding: 22px 22px 24px;
+    }
+
+    .work-info h3 {
+      color: var(--white);
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+
+    .work-info p {
+      color: var(--steel);
+      font-size: 0.86rem;
+      line-height: 1.65;
+    }
+
+    .before-after {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      height: 100%;
+    }
+
+    .ba-side {
+      position: relative;
+      overflow: hidden;
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .ba-side:last-child {
+      border-right: none;
+    }
+
+    .ba-label {
+      position: absolute;
+      bottom: 12px;
+      left: 12px;
+      background: rgba(0,0,0,0.55);
+      color: white;
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      padding: 4px 9px;
+      border-radius: 3px;
+    }
+
+    .stats-strip {
+      background: var(--navy-mid);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .stat-card {
+      background: var(--card-bg);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 8px;
+      padding: 26px;
+    }
+
+    .stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      color: var(--orange);
+      font-size: 2.4rem;
+      line-height: 1;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+
+    .stat-text {
+      color: var(--steel);
+      font-size: 0.84rem;
+    }
+
+    .cta-section {
+      text-align: center;
+      background:
+        linear-gradient(135deg, rgba(217,79,0,0.96), rgba(255,107,26,0.96)),
+        radial-gradient(circle at center, rgba(255,255,255,0.18), transparent 35%);
+    }
+
+    .cta-section h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      color: white;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+    }
+
+    .cta-section p {
+      color: rgba(255,255,255,0.82);
+      margin-bottom: 28px;
+    }
+
+    .cta-section .btn-primary {
+      background: white;
+      color: var(--orange-dark);
+    }
+
+    footer {
+      background: #0A1018;
+      padding: 30px 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    footer p {
+      font-size: 0.8rem;
+      color: var(--steel);
+    }
+
+    footer a {
+      color: var(--orange);
+      text-decoration: none;
+      font-size: 0.8rem;
+    }
+
+    @media (max-width: 980px) {
+      .work-card,
+      .work-card.large {
+        grid-column: span 6;
+      }
+
+      .stats-strip {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 680px) {
+      nav {
+        gap: 16px;
+      }
+
+      nav a {
+        font-size: 0.78rem;
+      }
+
+      .nav-cta {
+        display: none;
+      }
+
+      .gallery-hero {
+        padding-top: 120px;
+      }
+
+      .work-card,
+      .work-card.large {
+        grid-column: span 12;
+      }
+
+      .work-card.large .media-wrap,
+      .media-wrap {
+        height: 260px;
+      }
+
+      .stats-strip {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+
+<header>
+  <a href="index.html" class="logo" aria-label="Boyanıyo Kaporta Ana Sayfa">
+    <div class="logo-icon">
+      <svg viewBox="0 0 24 24"><path d="M3 10.5L4.5 6h15l1.5 4.5M3 10.5v5h1.5M3 10.5H1.5M20.5 10.5v5H19M20.5 10.5H22M4.5 15.5a2 2 0 1 0 4 0 2 2 0 0 0-4 0m11 0a2 2 0 1 0 4 0 2 2 0 0 0-4 0M6.5 15.5h7"/></svg>
+    </div>
+    <span class="logo-text">BOYANIYO<span> KAPORTA</span></span>
+  </a>
+
+  <nav>
+    <a href="index.html">Anasayfa</a>
+    <a href="galeri.html" class="active">Galeri</a>
+    <a href="index.html#hizmetler">Hizmetler</a>
+    <a href="index.html#iletisim">İletişim</a>
+    <a href="https://wa.me/905073647021?text=Merhaba%2C+arac%C4%B1m%C4%B1n+hasar%C4%B1n%C4%B1+g%C3%B6nderip+fiyat+teklifi+almak+istiyorum." class="nav-cta" target="_blank" rel="noopener">Teklif Al</a>
+  </nav>
+</header>
+
+<main>
+
+  <section class="gallery-hero">
+    <div class="hero-badge">Gerçek İşçilik Galerisi</div>
+    <h1>Öncesi <span>/</span> Sonrası<br>Uygulamalarımız</h1>
+    <p class="hero-sub">
+      Boya, kaporta, hasar onarımı, pasta cila ve kasko süreçlerinde teslim ettiğimiz araçların fotoğraf ve video arşivi.
+    </p>
+    <div class="hero-actions">
+      <a href="#galeri" class="btn-primary">Çalışmaları Gör</a>
+      <a href="index.html#iletisim" class="btn-secondary">Atölyeye Ulaş</a>
+    </div>
+  </section>
+
+  <section class="stats-strip">
+    <div class="stat-card">
+      <div class="stat-num">01</div>
+      <div class="stat-text">Öncesi / sonrası fotoğraflar</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">02</div>
+      <div class="stat-text">Video teslim görüntüleri</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">03</div>
+      <div class="stat-text">Hasar onarım örnekleri</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">04</div>
+      <div class="stat-text">Kasko & sigorta süreçleri</div>
+    </div>
+  </section>
+
+  <section id="galeri">
+    <div class="section-header">
+      <div class="section-label">Galeri</div>
+      <h2 class="section-title">Tamamlanan İşler</h2>
+      <p class="section-sub">
+        Aşağıdaki alanlara kendi fotoğraf ve videolarınızı ekleyebilirsiniz. Dosya adlarını değiştirmeniz yeterli.
+      </p>
+    </div>
+
+```
+<div class="filter-bar">
+  <div class="filter-pill active">Tümü</div>
+  <div class="filter-pill">Kaporta</div>
+  <div class="filter-pill">Boya</div>
+  <div class="filter-pill">Pasta Cila</div>
+  <div class="filter-pill">Video</div>
+</div>
+
+<div class="gallery-grid">
+
+  <article class="work-card large">
+    <div class="media-wrap">
+      <div class="before-after">
+        <div class="ba-side">
+          <img src="araba1_eski.jpg" alt="Araç eski hali">
+          <span class="ba-label">Öncesi</span>
+        </div>
+        <div class="ba-side">
+          <img src="araba1_yeni.jpg" alt="Araç yeni hali">
+          <span class="ba-label">Sonrası</span>
+        </div>
+      </div>
+      <span class="tag">Öncesi / Sonrası</span>
+    </div>
+    <div class="work-info">
+      <h3>Kaporta & Boya Onarımı</h3>
+      <p>Hasarlı bölge onarıldı, boya uyumu sağlandı ve araç teslim öncesi son kontrollerden geçirildi.</p>
+    </div>
+  </article>
+
+  <article class="work-card">
+    <div class="media-wrap">
+      <video controls poster="video-kapak.jpg">
+        <source src="uygulama-video-1.mp4" type="video/mp4">
+        Tarayıcınız video oynatmayı desteklemiyor.
+      </video>
+      <span class="tag">Video</span>
+      <span class="play-badge">▶</span>
+    </div>
+    <div class="work-info">
+      <h3>Teslim Öncesi Video</h3>
+      <p>Aracın teslim öncesi son görünümünü video olarak ekleyebilirsiniz.</p>
+    </div>
+  </article>
+
+  <article class="work-card">
+    <div class="media-wrap">
+      <img src="kaporta-uygulama-1.jpg" alt="Kaporta uygulaması">
+      <span class="tag">Kaporta</span>
+    </div>
+    <div class="work-info">
+      <h3>Kaporta Düzeltme</h3>
+      <p>Çamurluk, kapı, tampon veya kaput onarım çalışmalarınızı bu alanda sergileyebilirsiniz.</p>
+    </div>
+  </article>
+
+  <article class="work-card">
+    <div class="media-wrap">
+      <img src="boya-uygulama-1.jpg" alt="Boya uygulaması">
+      <span class="tag">Boya</span>
+    </div>
+    <div class="work-info">
+      <h3>Fırın Boya Uygulaması</h3>
+      <p>Boya işlemi sonrası parlaklık, renk uyumu ve yüzey kalitesini gösteren fotoğraf alanı.</p>
+    </div>
+  </article>
+
+  <article class="work-card">
+    <div class="media-wrap">
+      <img src="pasta-cila-1.jpg" alt="Pasta cila uygulaması">
+      <span class="tag">Pasta Cila</span>
+    </div>
+    <div class="work-info">
+      <h3>Pasta Cila & Parlatma</h3>
+      <p>Matlaşmış ve çizikli yüzeylerin uygulama sonrası görüntülerini burada paylaşabilirsiniz.</p>
+    </div>
+  </article>
+
+  <article class="work-card">
+    <div class="media-wrap">
+      <div class="placeholder">
+        Yeni Fotoğraf Alanı<br>
+        örnek: islem-2.jpg
+      </div>
+      <span class="tag">Yeni İş</span>
+    </div>
+    <div class="work-info">
+      <h3>Yeni Çalışma Ekle</h3>
+      <p>Buraya yeni tamamlanan bir aracın fotoğrafını ekleyebilirsiniz.</p>
+    </div>
+  </article>
+
+</div>
+```
+
+  </section>
+
+  <section class="cta-section">
+    <h2>Sizin Aracınız da Burada Yerini Alsın</h2>
+    <p>Hasarlı bölgenin fotoğrafını WhatsApp üzerinden gönderin, hızlıca ön bilgi ve teklif alın.</p>
+    <a href="https://wa.me/905073647021?text=Merhaba%2C+arac%C4%B1m%C4%B1n+hasar%C4%B1n%C4%B1+g%C3%B6nderip+fiyat+teklifi+almak+istiyorum." class="btn-primary" target="_blank" rel="noopener">
+      WhatsApp'tan Fotoğraf Gönder
+    </a>
+  </section>
+
+</main>
+
+<footer>
+  <p>© 2026 Boyanıyo Kaporta. Tüm hakları saklıdır.</p>
+  <a href="index.html">Anasayfaya Dön</a>
+</footer>
+
 </body>
 </html>
