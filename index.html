@@ -123,7 +123,6 @@
       background-position: center;
     }
 
-    /* Abstract car silhouette background */
     .hero-bg::after {
       content: '';
       position: absolute;
@@ -342,118 +341,6 @@
       line-height: 1.65;
     }
 
-    /* ── BEFORE / AFTER ── */
-    #oncesi-sonrasi { background: var(--navy); }
-
-    .ba-wrapper {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-    }
-
-    .ba-info .section-sub { margin-bottom: 24px; }
-
-    .ba-hint {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: var(--steel);
-      font-size: 0.82rem;
-      font-weight: 500;
-    }
-
-    .ba-hint svg { width: 20px; height: 20px; opacity: 0.7; }
-
-    .ba-slider-container {
-      position: relative;
-      width: 100%;
-      padding-top: 66%;
-      border-radius: 10px;
-      overflow: hidden;
-      cursor: ew-resize;
-      user-select: none;
-      box-shadow: 0 30px 70px rgba(0,0,0,0.5);
-    }
-
-    .ba-panel {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    /* AFTER panel – repaired car (gradient green) */
-    .ba-after {
-      background: linear-gradient(135deg, #1a2a1a 0%, #0d2010 40%, #162520 100%);
-    }
-
-    .ba-after .car-svg { opacity: 1; }
-
-    /* BEFORE panel – damaged car (clipped by slider) */
-    .ba-before {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, #1a1210 0%, #2a1508 40%, #1a1008 100%);
-      clip-path: inset(0 50% 0 0);
-      transition: clip-path 0.01s;
-    }
-
-    .car-svg {
-      width: 88%;
-      height: auto;
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-    }
-
-    /* Divider line */
-    .ba-divider {
-      position: absolute;
-      top: 0; bottom: 0;
-      left: 50%;
-      width: 2px;
-      background: white;
-      transform: translateX(-50%);
-      z-index: 10;
-      pointer-events: none;
-      transition: left 0.01s;
-    }
-
-    .ba-handle {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 44px; height: 44px;
-      background: white;
-      border-radius: 50%;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-      display: flex; align-items: center; justify-content: center;
-      z-index: 11;
-      pointer-events: none;
-    }
-
-    .ba-handle svg { width: 22px; height: 22px; }
-
-    .ba-label {
-      position: absolute;
-      top: 14px;
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      background: rgba(0,0,0,0.55);
-      backdrop-filter: blur(4px);
-      padding: 4px 10px;
-      border-radius: 3px;
-    }
-
-    .label-before { left: 14px; color: #ff8a8a; }
-    .label-after { right: 14px; color: #6fde8f; }
-
     /* ── TRUST ── */
     #neden-biz { background: var(--navy-mid); }
 
@@ -667,7 +554,6 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
-      .ba-wrapper { grid-template-columns: 1fr; }
       .contact-grid { grid-template-columns: 1fr; }
       .hero-stats { gap: 24px; flex-wrap: wrap; }
     }
@@ -679,131 +565,10 @@
       .hero-stats { gap: 20px; }
       .stat-num { font-size: 2rem; }
     }
-
-    /* ── KASKO STEPS ── */
-    .kasko-step {
-      display: flex;
-      gap: 20px;
-      align-items: flex-start;
-      padding: 20px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-
-    .kasko-step-num {
-      flex-shrink: 0;
-      width: 36px; height: 36px;
-      border: 2px solid rgba(255,107,26,0.4);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1rem;
-      color: var(--orange);
-      letter-spacing: 1px;
-    }
-
-    .kasko-step-title {
-      font-weight: 700;
-      font-size: 0.9rem;
-      color: var(--white);
-      margin-bottom: 4px;
-    }
-
-    .kasko-step-desc {
-      font-size: 0.82rem;
-      color: var(--steel);
-      line-height: 1.6;
-    }
-
-    /* ── GALLERY TEASER ── */
-    .teaser-mosaic {
-      display: grid;
-      grid-template-columns: 1.6fr 1fr;
-      gap: 16px;
-      margin-top: 40px;
-    }
-
-    .teaser-card {
-      display: block;
-      text-decoration: none;
-      border-radius: 8px;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.07);
-      transition: border-color 0.25s, transform 0.25s;
-    }
-
-    .teaser-card:hover { border-color: rgba(255,107,26,0.4); transform: translateY(-3px); }
-
-    .teaser-inner {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .teaser-main .teaser-inner { height: 260px; }
-    .teaser-small .teaser-inner { height: 120px; }
-
-    .teaser-col { display: flex; flex-direction: column; gap: 16px; }
-
-    .teaser-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(15,25,35,0.85) 0%, transparent 60%);
-      display: flex;
-      align-items: flex-end;
-      padding: 16px;
-      opacity: 0;
-      transition: opacity 0.25s;
-    }
-
-    .teaser-card:hover .teaser-overlay { opacity: 1; }
-
-    .teaser-cta-btn {
-      background: var(--orange);
-      color: white;
-      font-size: 0.78rem;
-      font-weight: 700;
-      padding: 7px 14px;
-      border-radius: 3px;
-      letter-spacing: 0.3px;
-    }
-
-    .teaser-meta {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 14px;
-      background: var(--card-bg);
-    }
-
-    .teaser-tag {
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: var(--orange);
-      letter-spacing: 0.5px;
-    }
-
-    .teaser-count {
-      font-size: 0.72rem;
-      color: var(--steel);
-    }
-
-    @media (max-width: 700px) {
-      .teaser-mosaic { grid-template-columns: 1fr; }
-      .teaser-col { flex-direction: row; }
-      .teaser-small .teaser-inner { height: 100px; }
-    }
-
-    @media (max-width: 900px) {
-      #kasko > div { grid-template-columns: 1fr !important; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { animation: none !important; transition: none !important; }
-    }
   </style>
 </head>
 <body>
 
-<!-- ── HEADER ── -->
 <header id="top">
   <a href="#" class="logo" aria-label="Boyanıyo Kaporta Ana Sayfa">
     <div class="logo-icon">
@@ -817,7 +582,7 @@
     <a href="galeri.html">Öncesi/Sonrası</a>
     <a href="#kasko">Kasko & Sigorta</a>
     <a href="#iletisim">İletişim</a>
-    <a href="https://wa.me/905XXXXXXXXX?text=Merhaba%2C+arac%C4%B1m%C4%B1n+hasar%C4%B1n%C4%B1+gidermek+i%C3%A7in+bilgi+almak+istiyorum." class="nav-cta" target="_blank" rel="noopener">Teklif Al</a>
+    <a href="https://wa.me/905073647021?text=Merhaba%2C+arac%C4%B1m%C4%B1n+hasar%C4%B1n%C4%B1+gidermek+i%C3%A7in+bilgi+almak+istiyorum." class="nav-cta" target="_blank" rel="noopener">Teklif Al</a>
   </nav>
 
   <button class="hamburger" aria-label="Menüyü Aç/Kapat" onclick="document.querySelector('.mobile-nav').classList.toggle('open')">
@@ -830,11 +595,10 @@
   <a href="galeri.html" onclick="this.closest('.mobile-nav').classList.remove('open')">Öncesi/Sonrası Galerisi</a>
   <a href="#kasko" onclick="this.closest('.mobile-nav').classList.remove('open')">Kasko & Sigorta</a>
   <a href="#iletisim" onclick="this.closest('.mobile-nav').classList.remove('open')">İletişim</a>
-  <a href="https://wa.me/905XXXXXXXXX?text=Merhaba%2C+arac%C4%B1m%C4%B1n+hasar%C4%B1n%C4%B1+gidermek+i%C3%A7in+bilgi+almak+istiyorum." target="_blank" rel="noopener">📲 WhatsApp Teklif Al</a>
+  <a href="https://wa.me/905073647021?text=Merhaba%2C+arac%C4%B1m%C4%B1n+hasar%C4%B1n%C4%B1+gidermek+i%C3%A7in+bilgi+almak+istiyorum." target="_blank" rel="noopener">📲 WhatsApp Teklif Al</a>
 </nav>
 
 
-<!-- ── HERO ── -->
 <section id="hero" aria-label="Ana Bölüm">
   <div class="hero-bg" role="presentation"></div>
   <div class="hero-content">
@@ -842,7 +606,7 @@
     <h1>Aracınız <em>İlk Günkü</em><br>Parlaklığına<br>Dönüşsün</h1>
     <p class="hero-sub">Fırın boya, PDR, pasta cila ve hasar onarımında bilgisayarlı renk tespiti ve orijinal boya kodu garantisiyle profesyonel çözümler.</p>
     <div class="hero-actions">
-      <a href="https://wa.me/905XXXXXXXXX?text=Merhaba%2C+arac%C4%B1m%C4%B1n+hasar%C4%B1n%C4%B1+g%C3%B6nderip+fiyat+teklifi+almak+istiyorum." class="btn-primary" target="_blank" rel="noopener">
+      <a href="https://wa.me/905073647021?text=Merhaba%2C+arac%C4%B1m%C4%B1n+hasar%C4%B1n%C4%B1+g%C3%B6nderip+fiyat+teklifi+almak+istiyorum." class="btn-primary" target="_blank" rel="noopener">
         <svg width="18" height="18" fill="white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
         Hızlı Teklif Al
       </a>
@@ -868,335 +632,14 @@
   </div>
 </section>
 
-
-<!-- ── HİZMETLER ── -->
 <section id="hizmetler" aria-labelledby="hizmetler-title">
   <div class="section-header">
     <div class="section-label">Hizmetlerimiz</div>
     <h2 class="section-title" id="hizmetler-title">Her Hasara Uygun<br>Profesyonel Çözüm</h2>
     <p class="section-sub">Aracınızın ihtiyacına göre en doğru teknolojiyle, orijinal kalitede sonuçlar üretiyoruz.</p>
   </div>
+  </section>
 
-  <div class="services-grid">
-
-    <article class="service-card">
-      <div class="service-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#FF6B1A" stroke-width="1.8"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2z"/><path d="M8 12h8M12 8v8"/><circle cx="12" cy="12" r="3" fill="rgba(255,107,26,0.15)"/></svg>
-      </div>
-      <h3>Fırın Boya</h3>
-      <p>80°C infrared fırın ortamında, orijinal fabrika kalitesinde kaplama. Renk uyumu için bilgisayarlı spektrometri kullanılır.</p>
-    </article>
-
-    <article class="service-card">
-      <div class="service-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#FF6B1A" stroke-width="1.8"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18"/></svg>
-      </div>
-      <h3>PDR – Boyasız Göçük Düzeltme</h3>
-      <p>Boyanıza dokunmadan, özel aletlerle göçükleri onarıyoruz. Dolu, park kazası ve küçük darbeler için ideal ve ekonomik çözüm.</p>
-    </article>
-
-    <article class="service-card">
-      <div class="service-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#FF6B1A" stroke-width="1.8"><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/><path d="M8 12s1 3 4 3 4-3 4-3"/><path d="M9 9h.01M15 9h.01"/></svg>
-      </div>
-      <h3>Pasta Cila & Seramik Kaplama</h3>
-      <p>Araç lakesindeki çizik ve matlaşmayı giderin. Seramik kaplama ile 3+ yıl boyunca boyayı UV ve çevre etkilerine karşı koruyun.</p>
-    </article>
-
-    <article class="service-card">
-      <div class="service-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#FF6B1A" stroke-width="1.8"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-      </div>
-      <h3>Hasar Onarımı</h3>
-      <p>Trafik kazası, kazıma ve deformasyon hasarlarında komple karoseri onarımı. Sigorta ve kasko işlemlerinizde süreç takibi yapıyoruz.</p>
-    </article>
-
-    <article class="service-card">
-      <div class="service-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#FF6B1A" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-      </div>
-      <h3>Parça Değişimi & Montaj</h3>
-      <p>Tampon, kaput, kapı ve çamurluk gibi karoseri parçalarının değişimi ve mükemmel uyumlu montajı. OEM parça seçeneği mevcuttur.</p>
-    </article>
-
-    <article class="service-card">
-      <div class="service-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#FF6B1A" stroke-width="1.8"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-      </div>
-      <h3>Detaylı İç Temizlik & Ozon</h3>
-      <p>Araç içi derin temizlik, koltuk yıkama ve ozon uygulaması. Koku, bakteri ve alerjenlere karşı hijyenik bir kabin ortamı.</p>
-    </article>
-
-  </div>
-</section>
-
-
-<!-- ── ÖNCESİ/SONRASI ── -->
-<!-- ── GALERİ TEASER ── -->
-<section id="galeri-teaser" aria-labelledby="galeri-title" style="background:var(--navy); padding: 90px 5%;">
-  <div class="section-header">
-    <div class="section-label">Öncesi / Sonrası</div>
-    <h2 class="section-title" id="galeri-title">Sonuçlar<br>Konuşuyor</h2>
-    <p class="section-sub">Gerçek araçlar, gerçek dönüşümler. Fotoğraf ve video galerimizdeki onlarca çalışmaya göz atın.</p>
-  </div>
-
-  <!-- Preview mosaic – 3 teaser cards -->
-  <div class="teaser-mosaic">
-
-    <a href="galeri.html" class="teaser-card teaser-main" aria-label="Galeriye git">
-      <div class="teaser-inner">
-        <!-- SVG placeholder – replace with real img src once you have photos -->
-        <svg viewBox="0 0 600 380" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
-          <defs>
-            <linearGradient id="tm1a" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#1a2c1a"/><stop offset="100%" stop-color="#0d1a0d"/></linearGradient>
-            <linearGradient id="tm1b" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#2a1808"/><stop offset="100%" stop-color="#150c04"/></linearGradient>
-            <clipPath id="left"><rect x="0" y="0" width="300" height="380"/></clipPath>
-            <clipPath id="right"><rect x="300" y="0" width="300" height="380"/></clipPath>
-          </defs>
-          <rect width="300" height="380" fill="url(#tm1b)"/>
-          <rect x="300" width="300" height="380" fill="url(#tm1a)"/>
-          <!-- damaged side marks -->
-          <path d="M80 160 Q100 150 90 180 Q82 165 95 170" stroke="#1a0a00" stroke-width="3" fill="none" clip-path="url(#left)"/>
-          <path d="M120 140 Q140 130 130 160" stroke="#1a0a00" stroke-width="3.5" fill="none" clip-path="url(#left)"/>
-          <path d="M60 200 L100 215 L80 208 L120 220" stroke="#1a0a00" stroke-width="2" fill="none" clip-path="url(#left)" opacity="0.7"/>
-          <!-- repaired side reflection -->
-          <path d="M320 120 Q420 105 520 115" stroke="rgba(255,255,255,0.2)" stroke-width="10" fill="none" stroke-linecap="round" clip-path="url(#right)"/>
-          <!-- divider line -->
-          <line x1="300" y1="0" x2="300" y2="380" stroke="white" stroke-width="2"/>
-          <circle cx="300" cy="190" r="22" fill="white"/>
-          <path d="M289 190l-5 0M289 190l-4 4M289 190l-4-4M311 190l5 0M311 190l4 4M311 190l4-4" stroke="#333" stroke-width="2.5" fill="none"/>
-          <!-- labels -->
-          <rect x="10" y="12" width="72" height="22" rx="4" fill="rgba(0,0,0,0.5)"/>
-          <text x="46" y="27" fill="#ff8a8a" font-family="Inter,sans-serif" font-size="11" font-weight="700" text-anchor="middle" letter-spacing="2">ÖNCESİ</text>
-          <rect x="518" y="12" width="72" height="22" rx="4" fill="rgba(0,0,0,0.5)"/>
-          <text x="554" y="27" fill="#6fde8f" font-family="Inter,sans-serif" font-size="11" font-weight="700" text-anchor="middle" letter-spacing="2">SONRASI</text>
-        </svg>
-        <div class="teaser-overlay">
-          <span class="teaser-cta-btn">Tüm Galeriyi Gör →</span>
-        </div>
-      </div>
-      <div class="teaser-meta">
-        <span class="teaser-tag">Tampon Boyası</span>
-        <span class="teaser-count">+40 çalışma</span>
-      </div>
-    </a>
-
-    <div class="teaser-col">
-      <a href="galeri.html?filter=video" class="teaser-card teaser-small" aria-label="Video galerisine git">
-        <div class="teaser-inner teaser-video-thumb">
-          <svg viewBox="0 0 280 175" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-            <defs><linearGradient id="tvg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#1a1028"/><stop offset="100%" stop-color="#0d0818"/></linearGradient></defs>
-            <rect width="280" height="175" fill="url(#tvg)"/>
-            <circle cx="140" cy="88" r="34" fill="rgba(255,107,26,0.15)" stroke="rgba(255,107,26,0.4)" stroke-width="2"/>
-            <polygon points="130,74 162,88 130,102" fill="var(--orange)" opacity="0.9"/>
-          </svg>
-          <div class="teaser-overlay">
-            <span class="teaser-cta-btn">Videoları İzle</span>
-          </div>
-        </div>
-        <div class="teaser-meta">
-          <span class="teaser-tag">Video</span>
-          <span class="teaser-count">PDR & Boya</span>
-        </div>
-      </a>
-
-      <a href="galeri.html?filter=kasko" class="teaser-card teaser-small" aria-label="Kasko onarım galerisine git">
-        <div class="teaser-inner teaser-kasko-thumb">
-          <svg viewBox="0 0 280 175" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-            <defs><linearGradient id="tkg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0e1f2a"/><stop offset="100%" stop-color="#091318"/></linearGradient></defs>
-            <rect width="280" height="175" fill="url(#tkg)"/>
-            <path d="M140 30 L175 55 L175 100 Q175 130 140 145 Q105 130 105 100 L105 55 Z" fill="none" stroke="rgba(255,107,26,0.4)" stroke-width="2"/>
-            <path d="M128 90 l10 10 18-22" stroke="#FF6B1A" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          <div class="teaser-overlay">
-            <span class="teaser-cta-btn">Kasko Onarımları</span>
-          </div>
-        </div>
-        <div class="teaser-meta">
-          <span class="teaser-tag">Kasko/Sigorta</span>
-          <span class="teaser-count">Hasar Onarımı</span>
-        </div>
-      </a>
-    </div>
-
-  </div>
-
-  <div style="text-align:center; margin-top:36px;">
-    <a href="galeri.html" class="btn-primary" style="display:inline-flex;">
-      <svg width="18" height="18" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
-      Tüm Fotoğraf ve Videoları Gör
-    </a>
-  </div>
-</section>
-
-
-<!-- ── KASKO & SİGORTA ── -->
-<section id="kasko" aria-labelledby="kasko-title" style="background: var(--navy-mid); padding: 90px 5%;">
-  <div style="display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center;">
-
-    <!-- Left: Text content -->
-    <div>
-      <div class="section-label">Kasko & Sigorta İşlemleri</div>
-      <h2 class="section-title" id="kasko-title">Sigorta<br>Sürecinizi<br><em style="color:var(--orange); font-style:normal;">Biz Yönetiriz</em></h2>
-      <p style="color:var(--steel); font-size:0.95rem; line-height:1.75; margin-bottom:28px;">
-        Kaza sonrası hem araç hasarıyla hem de sigorta bürokrasisiyle uğraşmak zorunda değilsiniz. Eksper randevusundan hasar tespit raporuna, sigorta şirketiyle yazışmalardan ödeme takibine kadar tüm süreci sizin adınıza yürütüyoruz.
-      </p>
-
-      <div style="display:flex; flex-direction:column; gap:14px; margin-bottom:32px;">
-        <div style="display:flex; align-items:center; gap:12px;">
-          <span style="width:24px; height:24px; background:rgba(255,107,26,0.15); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#FF6B1A" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>
-          </span>
-          <span style="font-size:0.875rem; color:var(--cream);">Eksper randevusu ve hasar tespit süreci</span>
-        </div>
-        <div style="display:flex; align-items:center; gap:12px;">
-          <span style="width:24px; height:24px; background:rgba(255,107,26,0.15); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#FF6B1A" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>
-          </span>
-          <span style="font-size:0.875rem; color:var(--cream);">Sigorta şirketi ile resmi yazışmalar</span>
-        </div>
-        <div style="display:flex; align-items:center; gap:12px;">
-          <span style="width:24px; height:24px; background:rgba(255,107,26,0.15); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#FF6B1A" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>
-          </span>
-          <span style="font-size:0.875rem; color:var(--cream);">Ek hasar tespiti ve itiraz süreçleri</span>
-        </div>
-        <div style="display:flex; align-items:center; gap:12px;">
-          <span style="width:24px; height:24px; background:rgba(255,107,26,0.15); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#FF6B1A" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>
-          </span>
-          <span style="font-size:0.875rem; color:var(--cream);">Kasko ödemesi alınana dek takip</span>
-        </div>
-        <div style="display:flex; align-items:center; gap:12px;">
-          <span style="width:24px; height:24px; background:rgba(255,107,26,0.15); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#FF6B1A" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>
-          </span>
-          <span style="font-size:0.875rem; color:var(--cream);">Tüm sigorta şirketleriyle çalışıyoruz</span>
-        </div>
-      </div>
-
-      <a href="https://wa.me/905XXXXXXXXX?text=Merhaba%2C+kasko+sigorta+i%C5%9Flemleri+hakk%C4%B1nda+bilgi+almak+istiyorum." class="btn-primary" target="_blank" rel="noopener">
-        <svg width="18" height="18" fill="white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
-        Kasko İşleminizi Başlatın
-      </a>
-    </div>
-
-    <!-- Right: Process steps -->
-    <div style="display:flex; flex-direction:column; gap:0;">
-      <div style="font-size:0.68rem; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--steel); margin-bottom:20px;">Süreç Nasıl İşler?</div>
-
-      <div class="kasko-step">
-        <div class="kasko-step-num">01</div>
-        <div class="kasko-step-body">
-          <div class="kasko-step-title">Hasarı Bize Bildirin</div>
-          <div class="kasko-step-desc">WhatsApp'tan fotoğraf gönderin. Araç sigortanız ve hasarın niteliğini değerlendiriyoruz.</div>
-        </div>
-      </div>
-
-      <div class="kasko-step">
-        <div class="kasko-step-num">02</div>
-        <div class="kasko-step-body">
-          <div class="kasko-step-title">Eksper Randevusu</div>
-          <div class="kasko-step-desc">Sigorta eksperi için randevu alıyoruz. Hasar tespitinde sizin yanınızdayız.</div>
-        </div>
-      </div>
-
-      <div class="kasko-step">
-        <div class="kasko-step-num">03</div>
-        <div class="kasko-step-body">
-          <div class="kasko-step-title">Onarım Başlıyor</div>
-          <div class="kasko-step-desc">Sigorta onayı alınır alınmaz onarıma başlıyoruz. Araç teslim tarihi net olarak belirlenir.</div>
-        </div>
-      </div>
-
-      <div class="kasko-step" style="border-bottom:none;">
-        <div class="kasko-step-num" style="background:var(--orange); color:white; border-color:var(--orange);">04</div>
-        <div class="kasko-step-body">
-          <div class="kasko-step-title">Aracınızı Teslim Alın</div>
-          <div class="kasko-step-desc">Orijinal boya kalitesinde teslim. Kasko ödeme takibini de sizin için sonuçlandırıyoruz.</div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-
-<!-- ── NEDEN BİZ ── -->
-<section id="neden-biz" aria-labelledby="trust-title">
-  <div class="section-header">
-    <div class="section-label">Neden Biz?</div>
-    <h2 class="section-title" id="trust-title">Fark Yaratan<br>Detaylara Dikkat</h2>
-    <p class="section-sub">Sektördeki 15 yılı aşkın deneyimimizle, her aracı kendi aracımız gibi özenle işliyoruz.</p>
-  </div>
-
-  <div class="trust-grid">
-
-    <div class="trust-item">
-      <div class="trust-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#FF6B1A" stroke-width="1.8" width="22" height="22"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18"/></svg>
-      </div>
-      <div>
-        <h4>Bilgisayarlı Renk Tespiti</h4>
-        <p>Spektrometri cihazıyla aracınızın tam orijinal renk kodunu tespit ediyor, milimetrik hassasiyette karışım yapıyoruz.</p>
-      </div>
-    </div>
-
-    <div class="trust-item">
-      <div class="trust-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#FF6B1A" stroke-width="1.8" width="22" height="22"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-      </div>
-      <div>
-        <h4>Orijinal Boya Kodu Garantisi</h4>
-        <p>Boyalı bölgelerde renge uyum garantisi veriyoruz. Memnun kalmazsanız ücretsiz yeniden boyama yapıyoruz.</p>
-      </div>
-    </div>
-
-    <div class="trust-item">
-      <div class="trust-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#FF6B1A" stroke-width="1.8" width="22" height="22"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 0 0 1.946-.806 3.42 3.42 0 0 1 4.438 0 3.42 3.42 0 0 0 1.946.806 3.42 3.42 0 0 1 3.138 3.138 3.42 3.42 0 0 0 .806 1.946 3.42 3.42 0 0 1 0 4.438 3.42 3.42 0 0 0-.806 1.946 3.42 3.42 0 0 1-3.138 3.138 3.42 3.42 0 0 0-1.946.806 3.42 3.42 0 0 1-4.438 0 3.42 3.42 0 0 0-1.946-.806 3.42 3.42 0 0 1-3.138-3.138 3.42 3.42 0 0 0-.806-1.946 3.42 3.42 0 0 1 0-4.438 3.42 3.42 0 0 0 .806-1.946 3.42 3.42 0 0 1 3.138-3.138z"/></svg>
-      </div>
-      <div>
-        <h4>Tüm Sigortalar Geçerli</h4>
-        <p>Her sigorta şirketiyle anlaşmalı çalışıyoruz. Kasko veya trafik sigortanız fark etmeksizin işlem yapıyoruz.</p>
-      </div>
-    </div>
-
-    <div class="trust-item">
-      <div class="trust-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#FF6B1A" stroke-width="1.8" width="22" height="22"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-      </div>
-      <div>
-        <h4>Hızlı Teslimat Süreci</h4>
-        <p>Küçük hasarlarda 24 saat, büyük karoseri işlerinde 3-5 iş günü teslimat taahhüdü. Gecikmeyiz.</p>
-      </div>
-    </div>
-
-    <div class="trust-item">
-      <div class="trust-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#FF6B1A" stroke-width="1.8" width="22" height="22"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-      </div>
-      <div>
-        <h4>Yetkili Servis Kalitesi</h4>
-        <p>Markalı aletler ve sertifikalı boyacı ustalarıyla, yetkili servis kalitesinde bağımsız atölye fiyatı sunuyoruz.</p>
-      </div>
-    </div>
-
-    <div class="trust-item">
-      <div class="trust-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#FF6B1A" stroke-width="1.8" width="22" height="22"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-      </div>
-      <div>
-        <h4>Anlık Bilgilendirme</h4>
-        <p>Araç atölyedeyken WhatsApp üzerinden fotoğraf ve durum güncellemesi gönderiyoruz. Her aşamadan haberdarsınız.</p>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-
-<!-- ── İLETİŞİM ── -->
 <section id="iletisim" aria-labelledby="contact-title">
   <div class="section-header">
     <div class="section-label">İletişim & Konum</div>
@@ -1209,13 +652,13 @@
 
       <div class="contact-block">
         <div class="contact-block-label">Adres</div>
-        <p>Kurtdoğmuş Mahallesi, Orhan Gazi Caddesi No: 42<br>Pendik / İstanbul</p>
+        <p>Çamçeşme, Serdar Sk. No:3 D:b<br>34890 Pendik/İstanbul</p>
       </div>
 
       <div class="contact-block">
         <div class="contact-block-label">Telefon & WhatsApp</div>
-        <a href="tel:+905XXXXXXXXX">0 5XX XXX XX XX</a><br>
-        <a href="https://wa.me/905XXXXXXXXX?text=Merhaba%2C+arac%C4%B1m%C4%B1n+hasar%C4%B1n%C4%B1+g%C3%B6nderip+fiyat+teklifi+almak+istiyorum." target="_blank" rel="noopener" style="color:var(--orange);">WhatsApp ile mesaj gönder →</a>
+        <a href="tel:+905073647021">0 507 364 70 21</a><br>
+        <a href="https://wa.me/905073647021?text=Merhaba%2C+arac%C4%B1m%C4%B1n+hasar%C4%B1n%C4%B1+g%C3%B6nderip+fiyat+teklifi+almak+istiyorum." target="_blank" rel="noopener" style="color:var(--orange);">WhatsApp ile mesaj gönder →</a>
       </div>
 
       <div class="contact-block">
@@ -1226,63 +669,9 @@
           <div class="hours-row"><span class="day">Pazar</span><span style="color:#e07070;">Kapalı</span></div>
         </div>
       </div>
-
     </div>
-
-    <div class="map-container">
-      <!-- Replace src with actual Google Maps embed URL -->
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d48165.03!2d29.2!3d40.87!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14b55f0e3c70c3a3%3A0x4e4da63e3f3d77e7!2sPendik%2C%20%C4%B0stanbul!5e0!3m2!1str!2str!4v1700000000000!5m2!1str!2str"
-        title="Boyanıyo Kaporta Harita – Pendik İstanbul"
-        allowfullscreen
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade">
-      </iframe>
     </div>
-  </div>
 </section>
-
-
-<!-- ── CTA STRIP ── -->
-<div class="cta-strip">
-  <h2>Hasarınızın Fotoğrafını Gönderin,<br>Anında Teklif Alın</h2>
-  <p>WhatsApp üzerinden fotoğraf yeterli. Ön keşif için atölyeye gelmenize gerek yok.</p>
-  <a href="https://wa.me/905XXXXXXXXX?text=Merhaba%2C+arac%C4%B1m%C4%B1n+hasar%C4%B1n%C4%B1n+foto%C4%9Fraflar%C4%B1n%C4%B1+g%C3%B6nderip+fiyat+teklifi+almak+istiyorum." class="btn-primary" target="_blank" rel="noopener">
-    <svg width="20" height="20" fill="white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
-    WhatsApp'tan Fotoğraf Gönder
-  </a>
-</div>
-
-
-<!-- ── FOOTER ── -->
-<footer>
-  <p>© 2025 Boyanıyo Kaporta. Tüm hakları saklıdır.</p>
-  <a href="https://wa.me/905XXXXXXXXX" target="_blank" rel="noopener">WhatsApp İletişim</a>
-</footer>
-
-
-<!-- ── WHATSAPP FLOAT ── -->
-<div class="wa-float" aria-label="WhatsApp ile İletişime Geç">
-  <span class="wa-label">Teklif Al!</span>
-  <a
-    class="wa-btn"
-    href="https://wa.me/905XXXXXXXXX?text=Merhaba%2C+arac%C4%B1m%C4%B1n+hasar%C4%B1n%C4%B1n+foto%C4%9Fraflar%C4%B1n%C4%B1+g%C3%B6nderip+fiyat+teklifi+almak+istiyorum."
-    target="_blank"
-    rel="noopener"
-    aria-label="WhatsApp'ta Mesaj Gönder – Fiyat teklifi alın"
-  >
-    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
-  </a>
-</div>
-
-
-<script>
-  /* ── Header scroll effect ── */
-  window.addEventListener('scroll', () => {
-    document.getElementById('top').style.background =
-      window.scrollY > 60 ? 'rgba(15,25,35,0.98)' : 'rgba(15,25,35,0.92)';
-  });
-</script>
 
 </body>
 </html>
