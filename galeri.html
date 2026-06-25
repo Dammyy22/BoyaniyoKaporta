@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="tr">
 <head>
   <meta charset="UTF-8" />
@@ -9,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
-  <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=JMMR8hamel6Wq9VvN6dU6lBtw50nT7RqkmqrKZmp73zWIg5HWqVUu-pXE82IkCoVDF8uVWYeclUD9a8KP7soxc4ln3smDRoLdvedyH5bZa-MGFqiwZXKB3ZYQSem5BXfhc3dJ6in5zZX0RhuMXHGR2NXSTge9ip5wyOywbtq0B9UIC37-3Krtb8J3I0Jjq20sTQj7Tkv7-n2rmRl_Q6dRLj4N8Wqd2hUxOL3A-dMs_a1WD1YzbXfw2CPd9djh4wzWSoJTWQqMum4sXc12osEifgXUcrLATQ3Fm40KmZ9Cxy_ZF1-k61l8zeJS0LUuPCvrYjNUj7b5ERGIiDSOuM99A" charset="UTF-8"></script><style>
+  <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
@@ -258,8 +259,7 @@
       gap: 20px;
     }
 
-    .work-card,
-    .video-card {
+    .work-card {
       grid-column: span 6;
       background: var(--card-bg);
       border: 1px solid rgba(255,255,255,0.07);
@@ -274,8 +274,7 @@
       border-color: rgba(255,107,26,0.35);
     }
 
-    .compare-slider,
-    .video-compare {
+    .compare-slider {
       position: relative;
       height: 360px;
       overflow: hidden;
@@ -284,23 +283,16 @@
       user-select: none;
     }
 
-    .compare-slider img,
-   .video-compare video {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  background: #101923;
-  pointer-events: none;
-}
-    .compare-after {
-      clip-path: inset(0 0 0 50%);
-    }
-
-    .video-after-wrap {
+    .compare-slider img {
       position: absolute;
       inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      pointer-events: none;
+    }
+
+    .compare-after {
       clip-path: inset(0 0 0 50%);
     }
 
@@ -362,6 +354,65 @@
     .video-label-after {
       right: 14px;
       color: #9dffb2;
+    }
+
+    .video-section {
+      background: var(--navy-mid);
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(280px, 1fr));
+      gap: 28px;
+      align-items: start;
+    }
+
+    .video-card {
+      background: var(--card-bg);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.25s, border-color 0.25s;
+    }
+
+    .phone-frame {
+      max-width: 430px;
+      margin: 0 auto;
+      padding: 18px;
+      background:
+        linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02)),
+        #0A1018;
+      border-radius: 34px;
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 28px 70px rgba(0,0,0,0.45);
+    }
+
+    .video-compare {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 9 / 16;
+      overflow: hidden;
+      cursor: ew-resize;
+      background: #101923;
+      user-select: none;
+      border-radius: 24px;
+    }
+
+    .video-compare video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center center;
+      background: #101923;
+      pointer-events: none;
+    }
+
+    .video-after-wrap {
+      position: absolute;
+      inset: 0;
+      clip-path: inset(0 0 0 50%);
     }
 
     .work-info {
@@ -458,9 +509,12 @@
     }
 
     @media (max-width: 980px) {
-      .work-card,
-      .video-card {
+      .work-card {
         grid-column: span 12;
+      }
+
+      .video-grid {
+        grid-template-columns: 1fr;
       }
 
       .stats-strip {
@@ -485,9 +539,18 @@
         padding-top: 120px;
       }
 
-      .compare-slider,
+      .compare-slider {
+        height: 300px;
+      }
+
+      .phone-frame {
+        max-width: 100%;
+        padding: 12px;
+        border-radius: 26px;
+      }
+
       .video-compare {
-        height: 360px;
+        border-radius: 18px;
       }
 
       .stats-strip {
@@ -495,6 +558,7 @@
       }
     }
   </style>
+
 </head>
 
 <body>
@@ -537,7 +601,7 @@
     </div>
     <div class="stat-card">
       <div class="stat-num">02</div>
-      <div class="stat-text">Video karşılaştırmaları</div>
+      <div class="stat-text">Dikey video karşılaştırmaları</div>
     </div>
     <div class="stat-card">
       <div class="stat-num">03</div>
@@ -551,140 +615,147 @@
 
   <section id="galeri">
     <div class="section-header">
-      <div class="section-label">Galeri</div>
-      <h2 class="section-title">Tamamlanan İşler</h2>
+      <div class="section-label">Fotoğraf Galerisi</div>
+      <h2 class="section-title">Öncesi / Sonrası Fotoğraflar</h2>
       <p class="section-sub">
         Slider’ı sağa sola kaydırarak araçların işlem öncesi ve sonrası hallerini karşılaştırabilirsiniz.
       </p>
     </div>
 
-    <div class="filter-bar">
-      <div class="filter-pill active">Tümü</div>
-      <div class="filter-pill">Kaporta</div>
-      <div class="filter-pill">Boya</div>
-      <div class="filter-pill">Pasta Cila</div>
-      <div class="filter-pill">Video</div>
+```
+<div class="filter-bar">
+  <div class="filter-pill active">Tümü</div>
+  <div class="filter-pill">Kaporta</div>
+  <div class="filter-pill">Boya</div>
+  <div class="filter-pill">Pasta Cila</div>
+</div>
+
+<div class="gallery-grid">
+
+  <article class="work-card">
+    <div class="compare-slider">
+      <img src="araba1_eski.jpg" alt="Araç eski hali">
+      <img src="araba1_yeni.jpg" alt="Araç yeni hali" class="compare-after">
+      <span class="compare-label label-before">Öncesi</span>
+      <span class="compare-label label-after">Sonrası</span>
+      <div class="compare-line"></div>
+      <div class="compare-handle">↔</div>
+    </div>
+    <div class="work-info">
+      <h3>Kaporta & Boya Onarımı</h3>
+      <p>Hasarlı bölge onarıldı, boya uyumu sağlandı ve araç teslim öncesi son kontrollerden geçirildi.</p>
+    </div>
+  </article>
+
+  <article class="work-card">
+    <div class="compare-slider">
+      <img src="kaporta-uygulama-1-eski.jpg" alt="Kaporta uygulaması eski hali">
+      <img src="kaporta-uygulama-1-yeni.jpg" alt="Kaporta uygulaması yeni hali" class="compare-after">
+      <span class="compare-label label-before">Öncesi</span>
+      <span class="compare-label label-after">Sonrası</span>
+      <div class="compare-line"></div>
+      <div class="compare-handle">↔</div>
+    </div>
+    <div class="work-info">
+      <h3>Kaporta Düzeltme</h3>
+      <p>Çamurluk, kapı, tampon veya kaput onarım çalışmalarınızı bu alanda sergileyebilirsiniz.</p>
+    </div>
+  </article>
+
+  <article class="work-card">
+    <div class="compare-slider">
+      <img src="boya-uygulama-1-eski.jpg" alt="Boya uygulaması eski hali">
+      <img src="boya-uygulama-1-yeni.jpg" alt="Boya uygulaması yeni hali" class="compare-after">
+      <span class="compare-label label-before">Öncesi</span>
+      <span class="compare-label label-after">Sonrası</span>
+      <div class="compare-line"></div>
+      <div class="compare-handle">↔</div>
+    </div>
+    <div class="work-info">
+      <h3>Fırın Boya Uygulaması</h3>
+      <p>Boya işlemi sonrası parlaklık, renk uyumu ve yüzey kalitesini gösteren fotoğraf alanı.</p>
+    </div>
+  </article>
+
+  <article class="work-card">
+    <div class="compare-slider">
+      <img src="pasta-cila-1-eski.jpg" alt="Pasta cila eski hali">
+      <img src="pasta-cila-1-yeni.jpg" alt="Pasta cila yeni hali" class="compare-after">
+      <span class="compare-label label-before">Öncesi</span>
+      <span class="compare-label label-after">Sonrası</span>
+      <div class="compare-line"></div>
+      <div class="compare-handle">↔</div>
+    </div>
+    <div class="work-info">
+      <h3>Pasta Cila & Parlatma</h3>
+      <p>Matlaşmış ve çizikli yüzeylerin uygulama sonrası görüntülerini burada paylaşabilirsiniz.</p>
+    </div>
+  </article>
+
+</div>
+```
+
+  </section>
+
+  <section class="video-section">
+    <div class="section-header">
+      <div class="section-label">Video Galerisi</div>
+      <h2 class="section-title">Dikey Öncesi / Sonrası Videolar</h2>
+      <p class="section-sub">
+        Telefonla çekilen dikey videolar bu alanda kırpılmadan, telefon ekranı formunda gösterilir.
+      </p>
     </div>
 
-    <div class="gallery-grid">
+```
+<div class="video-grid">
 
-      <article class="work-card">
-        <div class="compare-slider">
-          <img src="araba1_eski.jpg" alt="Araç eski hali">
-          <img src="araba1_yeni.jpg" alt="Araç yeni hali" class="compare-after">
-          <span class="compare-label label-before">Öncesi</span>
-          <span class="compare-label label-after">Sonrası</span>
-          <div class="compare-line"></div>
-          <div class="compare-handle">↔</div>
+  <article class="video-card">
+    <div class="phone-frame">
+      <div class="video-compare">
+        <video src="Kaporta_once.mp4" muted loop autoplay playsinline></video>
+
+        <div class="video-after-wrap">
+          <video src="Kaporta_sonra.mp4" muted loop autoplay playsinline></video>
         </div>
-        <div class="work-info">
-          <h3>Kaporta & Boya Onarımı</h3>
-          <p>Hasarlı bölge onarıldı, boya uyumu sağlandı ve araç teslim öncesi son kontrollerden geçirildi.</p>
-        </div>
-      </article>
 
-      <article class="video-card">
-        <div class="video-compare">
-          <video src="Kaporta_once.mp4" muted loop autoplay playsinline></video>
-
-          <div class="video-after-wrap">
-            <video src="Kaporta_sonra.mp4" muted loop autoplay playsinline></video>
-          </div>
-
-          <span class="video-compare-label video-label-before">Öncesi</span>
-          <span class="video-compare-label video-label-after">Sonrası</span>
-          <div class="video-compare-line"></div>
-          <div class="video-compare-handle">↔</div>
-        </div>
-        <div class="work-info">
-          <h3>Kaporta Video Karşılaştırması</h3>
-          <p>Slider’ı sağa sola kaydırarak kaporta işlemi öncesi ve sonrası video görüntüsünü karşılaştırabilirsiniz.</p>
-        </div>
-      </article>
-      <article class="video-card">
-  <div class="video-compare">
-    <video src="Araba2_once.mp4" muted loop autoplay playsinline></video>
-
-    <div class="video-after-wrap">
-      <video src="Araba2_sonra.mp4" muted loop autoplay playsinline></video>
+        <span class="video-compare-label video-label-before">Öncesi</span>
+        <span class="video-compare-label video-label-after">Sonrası</span>
+        <div class="video-compare-line"></div>
+        <div class="video-compare-handle">↔</div>
+      </div>
     </div>
 
-    <span class="video-compare-label video-label-before">Öncesi</span>
-    <span class="video-compare-label video-label-after">Sonrası</span>
-
-    <div class="video-compare-line"></div>
-    <div class="video-compare-handle">↔</div>
-  </div>
-
-  <div class="work-info">
-    <h3>Kaporta Onarımı - Araç 2</h3>
-    <p>
-      Kaydırarak aracın işlem öncesi ve işlem sonrası videosunu karşılaştırabilirsiniz.
-    </p>
-  </div>
-</article>
-
-      <article class="work-card">
-        <div class="compare-slider">
-          <img src="kaporta-uygulama-1-eski.jpg" alt="Kaporta uygulaması eski hali">
-          <img src="kaporta-uygulama-1-yeni.jpg" alt="Kaporta uygulaması yeni hali" class="compare-after">
-          <span class="compare-label label-before">Öncesi</span>
-          <span class="compare-label label-after">Sonrası</span>
-          <div class="compare-line"></div>
-          <div class="compare-handle">↔</div>
-        </div>
-        <div class="work-info">
-          <h3>Kaporta Düzeltme</h3>
-          <p>Çamurluk, kapı, tampon veya kaput onarım çalışmalarınızı bu alanda sergileyebilirsiniz.</p>
-        </div>
-      </article>
-
-      <article class="work-card">
-        <div class="compare-slider">
-          <img src="boya-uygulama-1-eski.jpg" alt="Boya uygulaması eski hali">
-          <img src="boya-uygulama-1-yeni.jpg" alt="Boya uygulaması yeni hali" class="compare-after">
-          <span class="compare-label label-before">Öncesi</span>
-          <span class="compare-label label-after">Sonrası</span>
-          <div class="compare-line"></div>
-          <div class="compare-handle">↔</div>
-        </div>
-        <div class="work-info">
-          <h3>Fırın Boya Uygulaması</h3>
-          <p>Boya işlemi sonrası parlaklık, renk uyumu ve yüzey kalitesini gösteren fotoğraf alanı.</p>
-        </div>
-      </article>
-
-      <article class="work-card">
-        <div class="compare-slider">
-          <img src="pasta-cila-1-eski.jpg" alt="Pasta cila eski hali">
-          <img src="pasta-cila-1-yeni.jpg" alt="Pasta cila yeni hali" class="compare-after">
-          <span class="compare-label label-before">Öncesi</span>
-          <span class="compare-label label-after">Sonrası</span>
-          <div class="compare-line"></div>
-          <div class="compare-handle">↔</div>
-        </div>
-        <div class="work-info">
-          <h3>Pasta Cila & Parlatma</h3>
-          <p>Matlaşmış ve çizikli yüzeylerin uygulama sonrası görüntülerini burada paylaşabilirsiniz.</p>
-        </div>
-      </article>
-
-      <article class="work-card">
-        <div class="compare-slider">
-          <img src="islem-2-eski.jpg" alt="Yeni çalışma eski hali">
-          <img src="islem-2-yeni.jpg" alt="Yeni çalışma yeni hali" class="compare-after">
-          <span class="compare-label label-before">Öncesi</span>
-          <span class="compare-label label-after">Sonrası</span>
-          <div class="compare-line"></div>
-          <div class="compare-handle">↔</div>
-        </div>
-        <div class="work-info">
-          <h3>Yeni Çalışma Ekle</h3>
-          <p>Buraya yeni tamamlanan bir aracın öncesi ve sonrası görsellerini ekleyebilirsiniz.</p>
-        </div>
-      </article>
-
+    <div class="work-info">
+      <h3>Kaporta Video Karşılaştırması</h3>
+      <p>Slider’ı sağa sola kaydırarak kaporta işlemi öncesi ve sonrası video görüntüsünü karşılaştırabilirsiniz.</p>
     </div>
+  </article>
+
+  <article class="video-card">
+    <div class="phone-frame">
+      <div class="video-compare">
+        <video src="Araba2_once.mp4" muted loop autoplay playsinline></video>
+
+        <div class="video-after-wrap">
+          <video src="Araba2_sonra.mp4" muted loop autoplay playsinline></video>
+        </div>
+
+        <span class="video-compare-label video-label-before">Öncesi</span>
+        <span class="video-compare-label video-label-after">Sonrası</span>
+        <div class="video-compare-line"></div>
+        <div class="video-compare-handle">↔</div>
+      </div>
+    </div>
+
+    <div class="work-info">
+      <h3>Kaporta Onarımı - Araç 2</h3>
+      <p>Kaydırarak aracın işlem öncesi ve işlem sonrası videosunu karşılaştırabilirsiniz.</p>
+    </div>
+  </article>
+
+</div>
+```
+
   </section>
 
   <section class="cta-section">
@@ -718,9 +789,11 @@
         if (afterItem) {
           afterItem.style.clipPath = `inset(0 0 0 ${percent}%)`;
         }
+
         if (line) {
           line.style.left = percent + '%';
         }
+
         if (handle) {
           handle.style.left = percent + '%';
         }
