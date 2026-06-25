@@ -1,36 +1,89 @@
-/* Galeri Yerleşimi */
-.gallery-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-    padding: 40px;
+.video-compare {
+position: relative;
+height: 360px;
+overflow: hidden;
+cursor: ew-resize;
+background: #101923;
+user-select: none;
 }
 
-.car-comparison {
-    display: flex;
-    gap: 15px;
-    background: #f4f4f4;
-    padding: 15px;
-    border-radius: 8px;
+.video-compare video {
+position: absolute;
+inset: 0;
+width: 100%;
+height: 100%;
+object-fit: cover;
+pointer-events: none;
 }
 
-.car-comparison figure {
-    flex: 1;
-    margin: 0;
+.video-after-wrap {
+position: absolute;
+inset: 0;
+clip-path: inset(0 0 0 50%);
 }
 
-.car-comparison img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 5px;
+.video-after-wrap video {
+position: absolute;
+inset: 0;
 }
 
-.btn {
-    display: inline-block;
-    padding: 10px 20px;
-    background: #007bff;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
+.video-compare-line {
+position: absolute;
+top: 0;
+bottom: 0;
+left: 50%;
+width: 2px;
+background: white;
+z-index: 5;
+transform: translateX(-50%);
+}
+
+.video-compare-handle {
+position: absolute;
+top: 50%;
+left: 50%;
+width: 46px;
+height: 46px;
+transform: translate(-50%, -50%);
+border-radius: 50%;
+background: white;
+color: var(--navy);
+z-index: 6;
+display: flex;
+align-items: center;
+justify-content: center;
+font-weight: 900;
+box-shadow: 0 8px 24px rgba(0,0,0,0.45);
+}
+
+.video-compare-label {
+position: absolute;
+top: 14px;
+z-index: 7;
+background: rgba(15,25,35,0.78);
+color: white;
+border: 1px solid rgba(255,255,255,0.12);
+backdrop-filter: blur(8px);
+font-size: 0.68rem;
+font-weight: 800;
+letter-spacing: 1.4px;
+text-transform: uppercase;
+padding: 5px 10px;
+border-radius: 3px;
+}
+
+.video-label-before {
+left: 14px;
+color: #ffb6a0;
+}
+
+.video-label-after {
+right: 14px;
+color: #9dffb2;
+}
+
+@media (max-width: 800px) {
+.video-compare {
+height: 280px;
+}
 }
