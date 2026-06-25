@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="tr">
 <head>
   <meta charset="UTF-8" />
@@ -10,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
-  <style>
+  <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=JMMR8hamel6Wq9VvN6dU6lBtw50nT7RqkmqrKZmp73zWIg5HWqVUu-pXE82IkCoVDF8uVWYeclUD9a8KP7soxc4ln3smDRoLdvedyH5bZa-MGFqiwZXKB3ZYQSem5BXfhc3dJ6in5zZX0RhuMXHGR2NXSTge9ip5wyOywbtq0B9UIC37-3Krtb8J3I0Jjq20sTQj7Tkv7-n2rmRl_Q6dRLj4N8Wqd2hUxOL3A-dMs_a1WD1YzbXfw2CPd9djh4wzWSoJTWQqMum4sXc12osEifgXUcrLATQ3Fm40KmZ9Cxy_ZF1-k61l8zeJS0LUuPCvrYjNUj7b5ERGIiDSOuM99A" charset="UTF-8"></script><style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
@@ -23,6 +22,8 @@
       --white: #FFFFFF;
       --card-bg: #1A2838;
     }
+
+    html { scroll-behavior: smooth; }
 
     body {
       background: var(--navy);
@@ -93,9 +94,7 @@
     }
 
     nav a:hover,
-    nav a.active {
-      color: var(--orange);
-    }
+    nav a.active { color: var(--orange); }
 
     .nav-cta {
       background: var(--orange);
@@ -105,9 +104,7 @@
       font-weight: 700;
     }
 
-    .nav-cta:hover {
-      background: var(--orange-dark);
-    }
+    .nav-cta:hover { background: var(--orange-dark); }
 
     .gallery-hero {
       min-height: 58vh;
@@ -204,13 +201,9 @@
       color: var(--orange);
     }
 
-    section {
-      padding: 90px 5%;
-    }
+    section { padding: 90px 5%; }
 
-    .section-header {
-      margin-bottom: 44px;
-    }
+    .section-header { margin-bottom: 44px; }
 
     .section-label {
       color: var(--orange);
@@ -265,8 +258,9 @@
       gap: 20px;
     }
 
-    .work-card {
-      grid-column: span 4;
+    .work-card,
+    .video-card {
+      grid-column: span 6;
       background: var(--card-bg);
       border: 1px solid rgba(255,255,255,0.07);
       border-radius: 10px;
@@ -274,63 +268,81 @@
       transition: transform 0.25s, border-color 0.25s;
     }
 
-    .work-card.large {
-      grid-column: span 8;
-    }
-
-    .work-card:hover {
+    .work-card:hover,
+    .video-card:hover {
       transform: translateY(-4px);
       border-color: rgba(255,107,26,0.35);
     }
 
-    .media-wrap {
+    .compare-slider,
+    .video-compare {
       position: relative;
-      height: 260px;
-      background: linear-gradient(135deg, #243448, #101923);
-      overflow: hidden;
-    }
-
-    .work-card.large .media-wrap {
       height: 360px;
+      overflow: hidden;
+      cursor: ew-resize;
+      background: #101923;
+      user-select: none;
     }
 
-    .media-wrap img,
-    .media-wrap video {
+    .compare-slider img,
+    .video-compare video {
+      position: absolute;
+      inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      display: block;
-      opacity: 0.92;
+      pointer-events: none;
     }
 
-    .placeholder {
-      height: 100%;
+    .compare-after {
+      clip-path: inset(0 0 0 50%);
+    }
+
+    .video-after-wrap {
+      position: absolute;
+      inset: 0;
+      clip-path: inset(0 0 0 50%);
+    }
+
+    .compare-line,
+    .video-compare-line {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 2px;
+      background: white;
+      z-index: 5;
+      transform: translateX(-50%);
+    }
+
+    .compare-handle,
+    .video-compare-handle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 46px;
+      height: 46px;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background: white;
+      color: var(--navy);
+      z-index: 6;
       display: flex;
       align-items: center;
       justify-content: center;
-      text-align: center;
-      padding: 30px;
-      color: rgba(245,240,232,0.55);
-      font-weight: 700;
-      letter-spacing: 0.6px;
-      background:
-        linear-gradient(135deg, rgba(255,107,26,0.16), transparent),
-        repeating-linear-gradient(
-          -45deg,
-          rgba(255,255,255,0.03) 0,
-          rgba(255,255,255,0.03) 8px,
-          transparent 8px,
-          transparent 16px
-        );
+      font-weight: 900;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.45);
     }
 
-    .tag {
+    .compare-label,
+    .video-compare-label {
       position: absolute;
       top: 14px;
-      left: 14px;
-      background: rgba(15,25,35,0.82);
-      color: var(--orange);
-      border: 1px solid rgba(255,107,26,0.25);
+      z-index: 7;
+      background: rgba(15,25,35,0.78);
+      color: white;
+      border: 1px solid rgba(255,255,255,0.12);
       backdrop-filter: blur(8px);
       font-size: 0.68rem;
       font-weight: 800;
@@ -340,20 +352,16 @@
       border-radius: 3px;
     }
 
-    .play-badge {
-      position: absolute;
+    .label-before,
+    .video-label-before {
+      left: 14px;
+      color: #ffb6a0;
+    }
+
+    .label-after,
+    .video-label-after {
       right: 14px;
-      top: 14px;
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      background: var(--orange);
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1rem;
-      box-shadow: 0 10px 30px rgba(255,107,26,0.35);
+      color: #9dffb2;
     }
 
     .work-info {
@@ -370,36 +378,6 @@
       color: var(--steel);
       font-size: 0.86rem;
       line-height: 1.65;
-    }
-
-    .before-after {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      height: 100%;
-    }
-
-    .ba-side {
-      position: relative;
-      overflow: hidden;
-      border-right: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .ba-side:last-child {
-      border-right: none;
-    }
-
-    .ba-label {
-      position: absolute;
-      bottom: 12px;
-      left: 12px;
-      background: rgba(0,0,0,0.55);
-      color: white;
-      font-size: 0.7rem;
-      font-weight: 800;
-      letter-spacing: 1.4px;
-      text-transform: uppercase;
-      padding: 4px 9px;
-      border-radius: 3px;
     }
 
     .stats-strip {
@@ -481,8 +459,8 @@
 
     @media (max-width: 980px) {
       .work-card,
-      .work-card.large {
-        grid-column: span 6;
+      .video-card {
+        grid-column: span 12;
       }
 
       .stats-strip {
@@ -507,14 +485,9 @@
         padding-top: 120px;
       }
 
-      .work-card,
-      .work-card.large {
-        grid-column: span 12;
-      }
-
-      .work-card.large .media-wrap,
-      .media-wrap {
-        height: 260px;
+      .compare-slider,
+      .video-compare {
+        height: 280px;
       }
 
       .stats-strip {
@@ -522,7 +495,6 @@
       }
     }
   </style>
-
 </head>
 
 <body>
@@ -565,7 +537,7 @@
     </div>
     <div class="stat-card">
       <div class="stat-num">02</div>
-      <div class="stat-text">Video teslim görüntüleri</div>
+      <div class="stat-text">Video karşılaştırmaları</div>
     </div>
     <div class="stat-card">
       <div class="stat-num">03</div>
@@ -582,106 +554,115 @@
       <div class="section-label">Galeri</div>
       <h2 class="section-title">Tamamlanan İşler</h2>
       <p class="section-sub">
-        Aşağıdaki alanlara kendi fotoğraf ve videolarınızı ekleyebilirsiniz. Dosya adlarını değiştirmeniz yeterli.
+        Slider’ı sağa sola kaydırarak araçların işlem öncesi ve sonrası hallerini karşılaştırabilirsiniz.
       </p>
     </div>
 
-```
-<div class="filter-bar">
-  <div class="filter-pill active">Tümü</div>
-  <div class="filter-pill">Kaporta</div>
-  <div class="filter-pill">Boya</div>
-  <div class="filter-pill">Pasta Cila</div>
-  <div class="filter-pill">Video</div>
-</div>
+    <div class="filter-bar">
+      <div class="filter-pill active">Tümü</div>
+      <div class="filter-pill">Kaporta</div>
+      <div class="filter-pill">Boya</div>
+      <div class="filter-pill">Pasta Cila</div>
+      <div class="filter-pill">Video</div>
+    </div>
 
-<div class="gallery-grid">
+    <div class="gallery-grid">
 
-  <article class="work-card large">
-    <div class="media-wrap">
-      <div class="before-after">
-        <div class="ba-side">
+      <article class="work-card">
+        <div class="compare-slider">
           <img src="araba1_eski.jpg" alt="Araç eski hali">
-          <span class="ba-label">Öncesi</span>
+          <img src="araba1_yeni.jpg" alt="Araç yeni hali" class="compare-after">
+          <span class="compare-label label-before">Öncesi</span>
+          <span class="compare-label label-after">Sonrası</span>
+          <div class="compare-line"></div>
+          <div class="compare-handle">↔</div>
         </div>
-        <div class="ba-side">
-          <img src="araba1_yeni.jpg" alt="Araç yeni hali">
-          <span class="ba-label">Sonrası</span>
+        <div class="work-info">
+          <h3>Kaporta & Boya Onarımı</h3>
+          <p>Hasarlı bölge onarıldı, boya uyumu sağlandı ve araç teslim öncesi son kontrollerden geçirildi.</p>
         </div>
-      </div>
-      <span class="tag">Öncesi / Sonrası</span>
-    </div>
-    <div class="work-info">
-      <h3>Kaporta & Boya Onarımı</h3>
-      <p>Hasarlı bölge onarıldı, boya uyumu sağlandı ve araç teslim öncesi son kontrollerden geçirildi.</p>
-    </div>
-  </article>
+      </article>
 
-  <article class="work-card">
-    <div class="media-wrap">
-      <video controls poster="video-kapak.jpg">
-        <source src="uygulama-video-1.mp4" type="video/mp4">
-        Tarayıcınız video oynatmayı desteklemiyor.
-      </video>
-      <span class="tag">Video</span>
-      <span class="play-badge">▶</span>
-    </div>
-    <div class="work-info">
-      <h3>Teslim Öncesi Video</h3>
-      <p>Aracın teslim öncesi son görünümünü video olarak ekleyebilirsiniz.</p>
-    </div>
-  </article>
+      <article class="video-card">
+        <div class="video-compare">
+          <video src="Kaporta_önce.mp4" muted loop autoplay playsinline></video>
 
-  <article class="work-card">
-    <div class="media-wrap">
-      <img src="kaporta-uygulama-1.jpg" alt="Kaporta uygulaması">
-      <span class="tag">Kaporta</span>
-    </div>
-    <div class="work-info">
-      <h3>Kaporta Düzeltme</h3>
-      <p>Çamurluk, kapı, tampon veya kaput onarım çalışmalarınızı bu alanda sergileyebilirsiniz.</p>
-    </div>
-  </article>
+          <div class="video-after-wrap">
+            <video src="Kaporta_sonra.mp4" muted loop autoplay playsinline></video>
+          </div>
 
-  <article class="work-card">
-    <div class="media-wrap">
-      <img src="boya-uygulama-1.jpg" alt="Boya uygulaması">
-      <span class="tag">Boya</span>
-    </div>
-    <div class="work-info">
-      <h3>Fırın Boya Uygulaması</h3>
-      <p>Boya işlemi sonrası parlaklık, renk uyumu ve yüzey kalitesini gösteren fotoğraf alanı.</p>
-    </div>
-  </article>
+          <span class="video-compare-label video-label-before">Öncesi</span>
+          <span class="video-compare-label video-label-after">Sonrası</span>
+          <div class="video-compare-line"></div>
+          <div class="video-compare-handle">↔</div>
+        </div>
+        <div class="work-info">
+          <h3>Kaporta Video Karşılaştırması</h3>
+          <p>Slider’ı sağa sola kaydırarak kaporta işlemi öncesi ve sonrası video görüntüsünü karşılaştırabilirsiniz.</p>
+        </div>
+      </article>
 
-  <article class="work-card">
-    <div class="media-wrap">
-      <img src="pasta-cila-1.jpg" alt="Pasta cila uygulaması">
-      <span class="tag">Pasta Cila</span>
-    </div>
-    <div class="work-info">
-      <h3>Pasta Cila & Parlatma</h3>
-      <p>Matlaşmış ve çizikli yüzeylerin uygulama sonrası görüntülerini burada paylaşabilirsiniz.</p>
-    </div>
-  </article>
+      <article class="work-card">
+        <div class="compare-slider">
+          <img src="kaporta-uygulama-1-eski.jpg" alt="Kaporta uygulaması eski hali">
+          <img src="kaporta-uygulama-1-yeni.jpg" alt="Kaporta uygulaması yeni hali" class="compare-after">
+          <span class="compare-label label-before">Öncesi</span>
+          <span class="compare-label label-after">Sonrası</span>
+          <div class="compare-line"></div>
+          <div class="compare-handle">↔</div>
+        </div>
+        <div class="work-info">
+          <h3>Kaporta Düzeltme</h3>
+          <p>Çamurluk, kapı, tampon veya kaput onarım çalışmalarınızı bu alanda sergileyebilirsiniz.</p>
+        </div>
+      </article>
 
-  <article class="work-card">
-    <div class="media-wrap">
-      <div class="placeholder">
-        Yeni Fotoğraf Alanı<br>
-        örnek: islem-2.jpg
-      </div>
-      <span class="tag">Yeni İş</span>
-    </div>
-    <div class="work-info">
-      <h3>Yeni Çalışma Ekle</h3>
-      <p>Buraya yeni tamamlanan bir aracın fotoğrafını ekleyebilirsiniz.</p>
-    </div>
-  </article>
+      <article class="work-card">
+        <div class="compare-slider">
+          <img src="boya-uygulama-1-eski.jpg" alt="Boya uygulaması eski hali">
+          <img src="boya-uygulama-1-yeni.jpg" alt="Boya uygulaması yeni hali" class="compare-after">
+          <span class="compare-label label-before">Öncesi</span>
+          <span class="compare-label label-after">Sonrası</span>
+          <div class="compare-line"></div>
+          <div class="compare-handle">↔</div>
+        </div>
+        <div class="work-info">
+          <h3>Fırın Boya Uygulaması</h3>
+          <p>Boya işlemi sonrası parlaklık, renk uyumu ve yüzey kalitesini gösteren fotoğraf alanı.</p>
+        </div>
+      </article>
 
-</div>
-```
+      <article class="work-card">
+        <div class="compare-slider">
+          <img src="pasta-cila-1-eski.jpg" alt="Pasta cila eski hali">
+          <img src="pasta-cila-1-yeni.jpg" alt="Pasta cila yeni hali" class="compare-after">
+          <span class="compare-label label-before">Öncesi</span>
+          <span class="compare-label label-after">Sonrası</span>
+          <div class="compare-line"></div>
+          <div class="compare-handle">↔</div>
+        </div>
+        <div class="work-info">
+          <h3>Pasta Cila & Parlatma</h3>
+          <p>Matlaşmış ve çizikli yüzeylerin uygulama sonrası görüntülerini burada paylaşabilirsiniz.</p>
+        </div>
+      </article>
 
+      <article class="work-card">
+        <div class="compare-slider">
+          <img src="islem-2-eski.jpg" alt="Yeni çalışma eski hali">
+          <img src="islem-2-yeni.jpg" alt="Yeni çalışma yeni hali" class="compare-after">
+          <span class="compare-label label-before">Öncesi</span>
+          <span class="compare-label label-after">Sonrası</span>
+          <div class="compare-line"></div>
+          <div class="compare-handle">↔</div>
+        </div>
+        <div class="work-info">
+          <h3>Yeni Çalışma Ekle</h3>
+          <p>Buraya yeni tamamlanan bir aracın öncesi ve sonrası görsellerini ekleyebilirsiniz.</p>
+        </div>
+      </article>
+
+    </div>
   </section>
 
   <section class="cta-section">
@@ -698,6 +679,48 @@
   <p>© 2026 Boyanıyo Kaporta. Tüm hakları saklıdır.</p>
   <a href="index.html">Anasayfaya Dön</a>
 </footer>
+
+<script>
+  function setupCompareSlider(selector, afterSelector, lineSelector, handleSelector) {
+    document.querySelectorAll(selector).forEach(function(slider) {
+      const afterItem = slider.querySelector(afterSelector);
+      const line = slider.querySelector(lineSelector);
+      const handle = slider.querySelector(handleSelector);
+
+      function moveSlider(clientX) {
+        const rect = slider.getBoundingClientRect();
+        let x = clientX - rect.left;
+        x = Math.max(0, Math.min(x, rect.width));
+        const percent = (x / rect.width) * 100;
+
+        if (afterItem) {
+          afterItem.style.clipPath = `inset(0 0 0 ${percent}%)`;
+        }
+        if (line) {
+          line.style.left = percent + '%';
+        }
+        if (handle) {
+          handle.style.left = percent + '%';
+        }
+      }
+
+      slider.addEventListener('mousemove', function(e) {
+        moveSlider(e.clientX);
+      });
+
+      slider.addEventListener('touchmove', function(e) {
+        moveSlider(e.touches[0].clientX);
+      }, { passive: true });
+    });
+  }
+
+  setupCompareSlider('.compare-slider', '.compare-after', '.compare-line', '.compare-handle');
+  setupCompareSlider('.video-compare', '.video-after-wrap', '.video-compare-line', '.video-compare-handle');
+
+  document.querySelectorAll('.video-compare video').forEach(function(video) {
+    video.play().catch(function() {});
+  });
+</script>
 
 </body>
 </html>
