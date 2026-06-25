@@ -474,25 +474,30 @@
     #iletisim { background: var(--navy); }
 
     .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.4fr;
-      gap: 50px;
-      align-items: start;
-    }
-
-    .contact-info {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  max-width: 360px;
+display: grid;
+grid-template-columns: minmax(320px, 420px) 1fr;
+gap: 36px;
+align-items: stretch;
+max-width: 1180px;
+margin: 0 auto;
+}
+    
+.contact-info {
+display: flex;
+flex-direction: column;
+gap: 18px;
 }
 
     .contact-block {
-      background: var(--card-bg);
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: 8px;
-      padding: 22px 24px;
-    }
+background: var(--card-bg);
+border: 1px solid rgba(255,255,255,0.06);
+border-radius: 10px;
+padding: 20px 22px;
+min-height: 110px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+}
 
     .contact-block-label {
       font-size: 0.68rem;
