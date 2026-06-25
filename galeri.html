@@ -362,7 +362,7 @@
 
     .video-grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(280px, 1fr));
+      grid-template-columns: repeat(3, minmax(260px, 1fr));
       gap: 28px;
       align-items: start;
     }
@@ -376,13 +376,13 @@
     }
 
     .phone-frame {
-      max-width: 430px;
+      max-width: 360px;
       margin: 0 auto;
-      padding: 18px;
+      padding: 14px;
       background:
         linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02)),
         #0A1018;
-      border-radius: 34px;
+      border-radius: 30px;
       border: 1px solid rgba(255,255,255,0.08);
       box-shadow: 0 28px 70px rgba(0,0,0,0.45);
     }
@@ -395,7 +395,7 @@
       cursor: ew-resize;
       background: #101923;
       user-select: none;
-      border-radius: 24px;
+      border-radius: 22px;
     }
 
     .video-compare video {
@@ -508,13 +508,15 @@
       font-size: 0.8rem;
     }
 
+    @media (max-width: 1100px) {
+      .video-grid {
+        grid-template-columns: repeat(2, minmax(260px, 1fr));
+      }
+    }
+
     @media (max-width: 980px) {
       .work-card {
         grid-column: span 12;
-      }
-
-      .video-grid {
-        grid-template-columns: 1fr;
       }
 
       .stats-strip {
@@ -541,6 +543,10 @@
 
       .compare-slider {
         height: 300px;
+      }
+
+      .video-grid {
+        grid-template-columns: 1fr;
       }
 
       .phone-frame {
@@ -746,37 +752,31 @@
         <div class="video-compare-handle">↔</div>
       </div>
     </div>
-    <article class="video-card">
-  <div class="phone-frame">
-    <div class="video-compare">
-      <video src="Araba3_once.mp4" muted loop autoplay playsinline></video>
-
-```
-  <div class="video-after-wrap">
-    <video src="Araba3_sonra.mp4" muted loop autoplay playsinline></video>
-  </div>
-
-  <span class="video-compare-label video-label-before">Öncesi</span>
-  <span class="video-compare-label video-label-after">Sonrası</span>
-
-  <div class="video-compare-line"></div>
-  <div class="video-compare-handle">↔</div>
-</div>
-```
-
-  </div>
-
-  <div class="work-info">
-    <h3>Kaporta Onarımı - Araç 3</h3>
-    <p>
-      Kaydırarak aracın işlem öncesi ve işlem sonrası videosunu karşılaştırabilirsiniz.
-    </p>
-  </div>
-</article>
-
 
     <div class="work-info">
       <h3>Kaporta Onarımı - Araç 2</h3>
+      <p>Kaydırarak aracın işlem öncesi ve işlem sonrası videosunu karşılaştırabilirsiniz.</p>
+    </div>
+  </article>
+
+  <article class="video-card">
+    <div class="phone-frame">
+      <div class="video-compare">
+        <video src="Araba3_once.mp4" muted loop autoplay playsinline></video>
+
+        <div class="video-after-wrap">
+          <video src="Araba3_sonra.mp4" muted loop autoplay playsinline></video>
+        </div>
+
+        <span class="video-compare-label video-label-before">Öncesi</span>
+        <span class="video-compare-label video-label-after">Sonrası</span>
+        <div class="video-compare-line"></div>
+        <div class="video-compare-handle">↔</div>
+      </div>
+    </div>
+
+    <div class="work-info">
+      <h3>Kaporta Onarımı - Araç 3</h3>
       <p>Kaydırarak aracın işlem öncesi ve işlem sonrası videosunu karşılaştırabilirsiniz.</p>
     </div>
   </article>
