@@ -362,9 +362,19 @@
 
     .video-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(260px, 1fr));
-      gap: 28px;
+      grid-template-columns: repeat(2, minmax(300px, 420px));
+      justify-content: center;
+      gap: 36px;
+      max-width: 980px;
+      margin: 0 auto;
       align-items: start;
+    }
+
+    .video-card:last-child {
+      grid-column: 1 / -1;
+      width: 100%;
+      max-width: 420px;
+      justify-self: center;
     }
 
     .video-card {
@@ -376,7 +386,7 @@
     }
 
     .phone-frame {
-      max-width: 360px;
+      max-width: 390px;
       margin: 0 auto;
       padding: 14px;
       background:
@@ -616,102 +626,20 @@
     <div class="hero-badge">Gerçek İşçilik Galerisi</div>
     <h1>Öncesi <span>/</span> Sonrası<br>Uygulamalarımız</h1>
     <p class="hero-sub">
-      Boya, kaporta, hasar onarımı, pasta cila ve kasko süreçlerinde teslim ettiğimiz araçların fotoğraf ve video arşivi.
+      Boya, kaporta ve hasar onarımı sonrası teslim ettiğimiz araçların gerçek öncesi / sonrası video karşılaştırmaları.
     </p>
     <div class="hero-actions">
-      <a href="#galeri" class="btn-primary">Çalışmaları Gör</a>
+      <a href="#videolar" class="btn-primary">Çalışmaları Gör</a>
       <a href="index.html#iletisim" class="btn-secondary">Atölyeye Ulaş</a>
     </div>
   </section>
 
-  <section id="galeri">
+  <section id="videolar" class="video-section">
     <div class="section-header">
-      <div class="section-label">Fotoğraf Galerisi</div>
-      <h2 class="section-title">Öncesi / Sonrası Fotoğraflar</h2>
+      <div class="section-label">Uygulama Galerisi</div>
+      <h2 class="section-title">Öncesi / Sonrası Video Karşılaştırmaları</h2>
       <p class="section-sub">
-        Slider’ı sağa sola kaydırarak araçların işlem öncesi ve sonrası hallerini karşılaştırabilirsiniz.
-      </p>
-    </div>
-
-<div class="filter-bar">
-  <div class="filter-pill active">Tümü</div>
-  <div class="filter-pill">Kaporta</div>
-  <div class="filter-pill">Boya</div>
-  <div class="filter-pill">Pasta Cila</div>
-</div>
-
-<div class="gallery-grid">
-
-  <article class="work-card">
-    <div class="compare-slider">
-      <img src="araba1_eski.jpg" alt="Araç eski hali">
-      <img src="araba1_yeni.jpg" alt="Araç yeni hali" class="compare-after">
-      <span class="compare-label label-before">Öncesi</span>
-      <span class="compare-label label-after">Sonrası</span>
-      <div class="compare-line"></div>
-      <div class="compare-handle">↔</div>
-    </div>
-    <div class="work-info">
-      <h3>Kaporta & Boya Onarımı</h3>
-      <p>Hasarlı bölge onarıldı, boya uyumu sağlandı ve araç teslim öncesi son kontrollerden geçirildi.</p>
-    </div>
-  </article>
-
-  <article class="work-card">
-    <div class="compare-slider">
-      <img src="kaporta-uygulama-1-eski.jpg" alt="Kaporta uygulaması eski hali">
-      <img src="kaporta-uygulama-1-yeni.jpg" alt="Kaporta uygulaması yeni hali" class="compare-after">
-      <span class="compare-label label-before">Öncesi</span>
-      <span class="compare-label label-after">Sonrası</span>
-      <div class="compare-line"></div>
-      <div class="compare-handle">↔</div>
-    </div>
-    <div class="work-info">
-      <h3>Kaporta Düzeltme</h3>
-      <p>Çamurluk, kapı, tampon veya kaput onarım çalışmalarınızı bu alanda sergileyebilirsiniz.</p>
-    </div>
-  </article>
-
-  <article class="work-card">
-    <div class="compare-slider">
-      <img src="boya-uygulama-1-eski.jpg" alt="Boya uygulaması eski hali">
-      <img src="boya-uygulama-1-yeni.jpg" alt="Boya uygulaması yeni hali" class="compare-after">
-      <span class="compare-label label-before">Öncesi</span>
-      <span class="compare-label label-after">Sonrası</span>
-      <div class="compare-line"></div>
-      <div class="compare-handle">↔</div>
-    </div>
-    <div class="work-info">
-      <h3>Fırın Boya Uygulaması</h3>
-      <p>Boya işlemi sonrası parlaklık, renk uyumu ve yüzey kalitesini gösteren fotoğraf alanı.</p>
-    </div>
-  </article>
-
-  <article class="work-card">
-    <div class="compare-slider">
-      <img src="pasta-cila-1-eski.jpg" alt="Pasta cila eski hali">
-      <img src="pasta-cila-1-yeni.jpg" alt="Pasta cila yeni hali" class="compare-after">
-      <span class="compare-label label-before">Öncesi</span>
-      <span class="compare-label label-after">Sonrası</span>
-      <div class="compare-line"></div>
-      <div class="compare-handle">↔</div>
-    </div>
-    <div class="work-info">
-      <h3>Pasta Cila & Parlatma</h3>
-      <p>Matlaşmış ve çizikli yüzeylerin uygulama sonrası görüntülerini burada paylaşabilirsiniz.</p>
-    </div>
-  </article>
-
-</div>
-
-  </section>
-
-  <section class="video-section">
-    <div class="section-header">
-      <div class="section-label">Video Galerisi</div>
-      <h2 class="section-title">Dikey Öncesi / Sonrası Videolar</h2>
-      <p class="section-sub">
-        Telefonla çekilen dikey videolar bu alanda kırpılmadan, telefon ekranı formunda gösterilir.
+        Ortadaki kontrolü sağa sola kaydırarak araçların işlem öncesi ve sonrası görüntülerini karşılaştırabilirsiniz.
       </p>
     </div>
 
