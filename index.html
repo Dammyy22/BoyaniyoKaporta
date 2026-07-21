@@ -857,6 +857,188 @@ justify-content: center;
     .quote-success { display:none; max-width:900px; margin:22px auto 0; padding:16px 18px; border:1px solid rgba(111,222,143,.35); border-radius:8px; background:rgba(111,222,143,.08); color:#9aefb2; text-align:center; }
     @media(max-width:640px){.quote-form{padding:22px 18px}.form-grid{grid-template-columns:1fr}.form-field.full{grid-column:auto}}
 
+  
+    /* ── DAILY BEFORE / AFTER VIDEO SHOWCASE ── */
+    .daily-showcase {
+      max-width: 1120px;
+      margin: 42px auto 54px;
+      padding: 28px;
+      border: 1px solid rgba(255,107,26,0.16);
+      border-radius: 14px;
+      background: linear-gradient(145deg, rgba(255,107,26,0.055), rgba(255,255,255,0.018));
+    }
+
+    .daily-showcase-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+
+    .daily-showcase-kicker {
+      color: var(--orange);
+      font-size: 0.69rem;
+      font-weight: 800;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+
+    .daily-showcase-title {
+      color: var(--white);
+      font-size: 1.25rem;
+      line-height: 1.3;
+    }
+
+    .daily-gallery-link {
+      flex-shrink: 0;
+      color: var(--orange);
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .daily-video-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .daily-video-card {
+      min-width: 0;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+      background: var(--card-bg);
+      transition: transform .25s, border-color .25s;
+    }
+
+    .daily-video-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255,107,26,0.34);
+    }
+
+    .daily-phone-frame {
+      max-width: 270px;
+      margin: 0 auto;
+      padding: 10px;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 24px;
+      background: linear-gradient(145deg, rgba(255,255,255,0.07), rgba(255,255,255,0.015)), #0A1018;
+      box-shadow: 0 20px 48px rgba(0,0,0,0.38);
+    }
+
+    .daily-video-compare {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 9 / 16;
+      overflow: hidden;
+      cursor: ew-resize;
+      border-radius: 17px;
+      background: #101923;
+      user-select: none;
+    }
+
+    .daily-video-compare video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #101923;
+      pointer-events: none;
+    }
+
+    .daily-video-after {
+      position: absolute;
+      inset: 0;
+      clip-path: inset(0 0 0 50%);
+    }
+
+    .daily-video-line {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      z-index: 5;
+      width: 2px;
+      background: #fff;
+      transform: translateX(-50%);
+    }
+
+    .daily-video-handle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: 6;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: #fff;
+      color: var(--navy);
+      font-weight: 900;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 7px 20px rgba(0,0,0,0.42);
+    }
+
+    .daily-video-label {
+      position: absolute;
+      top: 11px;
+      z-index: 7;
+      padding: 4px 8px;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 3px;
+      background: rgba(15,25,35,0.78);
+      color: #fff;
+      font-size: 0.6rem;
+      font-weight: 800;
+      letter-spacing: 1.1px;
+      text-transform: uppercase;
+      backdrop-filter: blur(7px);
+    }
+
+    .daily-label-before { left: 10px; color: #ffb6a0; }
+    .daily-label-after { right: 10px; color: #9dffb2; }
+
+    .daily-video-info {
+      padding: 17px 17px 19px;
+      text-align: center;
+    }
+
+    .daily-video-info h3 {
+      color: var(--white);
+      font-size: 0.9rem;
+      line-height: 1.45;
+    }
+
+    @media (max-width: 900px) {
+      .daily-showcase { padding: 24px 18px; }
+      .daily-video-grid {
+        display: flex;
+        gap: 16px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        padding: 2px 2px 14px;
+        scrollbar-width: thin;
+        scrollbar-color: var(--orange) rgba(255,255,255,0.05);
+      }
+      .daily-video-card {
+        flex: 0 0 min(78vw, 320px);
+        scroll-snap-align: start;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .daily-showcase { margin: 32px auto 42px; }
+      .daily-showcase-head { align-items: flex-start; flex-direction: column; gap: 9px; }
+      .daily-showcase-title { font-size: 1.08rem; }
+      .daily-phone-frame { max-width: 250px; }
+    }
+
   </style>
 </head>
 <body>
@@ -915,6 +1097,18 @@ justify-content: center;
     <h2 class="section-title" id="hizmetler-title">Her Hasara Uygun<br>Profesyonel Çözüm</h2>
     <p class="section-sub">Aracınızın ihtiyacına göre en doğru teknolojiyle, orijinal kalitede sonuçlar üretiyoruz.</p>
   </div>
+
+  <div class="daily-showcase" aria-labelledby="daily-showcase-title">
+    <div class="daily-showcase-head">
+      <div>
+        <div class="daily-showcase-kicker">Her Gün Yeni Bir Seçki</div>
+        <h3 class="daily-showcase-title" id="daily-showcase-title">Bugünün Öncesi / Sonrası Uygulamaları</h3>
+      </div>
+      <a class="daily-gallery-link" href="galeri.html">Tüm galeriyi gör →</a>
+    </div>
+    <div class="daily-video-grid" id="daily-video-grid" aria-live="polite"></div>
+  </div>
+
   <div class="services-grid">
     <article class="service-card">
       <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#FF6B1A" stroke-width="1.8"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
@@ -1048,6 +1242,136 @@ justify-content: center;
     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
   </a>
 </div>
+
+
+<script>
+  (function dailyVideoShowcase() {
+    const container = document.getElementById('daily-video-grid');
+    if (!container) return;
+
+    const videos = [
+      { title: 'Hyundai Accent Kaporta Onarımı ve Boyanması', before: 'Kaporta_once.mp4', after: 'Kaporta_sonra.mp4' },
+      { title: 'Renault Clio 2 Arka Çamurluk Onarımı ve Boyanması', before: 'Araba2_once.mp4', after: 'Araba2_sonra.mp4' },
+      { title: 'Renault Scénic Kaporta Onarımı ve Boyanması', before: 'araba3_oncee.mp4', after: 'araba3_sonraa.mp4' },
+      { title: 'Volkswagen Golf 7 Kaporta Onarımı ve Boyanması', before: 'araba3_once.mp4?v=20260721-2', after: 'araba3_sonra.mp4?v=20260721-2' },
+      { title: 'Steyr 768 Traktör Kaporta Yenileme ve Boyama', before: 'tr_once.mp4', after: 'tr_sonra.mp4' }
+    ];
+
+    const dateKey = new Intl.DateTimeFormat('en-CA', {
+      timeZone: 'Europe/Istanbul',
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit'
+    }).format(new Date());
+
+    let seed = Number(dateKey.replace(/-/g, '')) || 1;
+    function random() {
+      seed = (seed * 1664525 + 1013904223) >>> 0;
+      return seed / 4294967296;
+    }
+
+    const dailySelection = videos.slice();
+    for (let i = dailySelection.length - 1; i > 0; i--) {
+      const j = Math.floor(random() * (i + 1));
+      [dailySelection[i], dailySelection[j]] = [dailySelection[j], dailySelection[i]];
+    }
+
+    container.innerHTML = dailySelection.slice(0, 3).map(function(item) {
+      return `
+        <article class="daily-video-card">
+          <div class="daily-phone-frame">
+            <div class="daily-video-compare">
+              <video src="${item.before}" muted autoplay playsinline preload="metadata"></video>
+              <div class="daily-video-after">
+                <video src="${item.after}" muted autoplay playsinline preload="metadata"></video>
+              </div>
+              <span class="daily-video-label daily-label-before">Öncesi</span>
+              <span class="daily-video-label daily-label-after">Sonrası</span>
+              <div class="daily-video-line"></div>
+              <div class="daily-video-handle">↔</div>
+            </div>
+          </div>
+          <div class="daily-video-info"><h3>${item.title}</h3></div>
+        </article>
+      `;
+    }).join('');
+
+    container.querySelectorAll('.daily-video-compare').forEach(function(compare) {
+      const pair = Array.from(compare.querySelectorAll('video'));
+      const afterLayer = compare.querySelector('.daily-video-after');
+      const line = compare.querySelector('.daily-video-line');
+      const handle = compare.querySelector('.daily-video-handle');
+      let ready = false;
+      let resetting = false;
+
+      function moveSlider(clientX) {
+        const rect = compare.getBoundingClientRect();
+        const x = Math.max(0, Math.min(clientX - rect.left, rect.width));
+        const percent = (x / rect.width) * 100;
+        afterLayer.style.clipPath = 'inset(0 0 0 ' + percent + '%)';
+        line.style.left = percent + '%';
+        handle.style.left = percent + '%';
+      }
+
+      compare.addEventListener('mousemove', function(event) { moveSlider(event.clientX); });
+      compare.addEventListener('touchmove', function(event) {
+        moveSlider(event.touches[0].clientX);
+      }, { passive: true });
+
+      pair.forEach(function(video) {
+        video.muted = true;
+        video.loop = false;
+        video.playsInline = true;
+      });
+
+      function prepare() {
+        if (!pair.every(function(video) {
+          return Number.isFinite(video.duration) && video.duration > 0;
+        })) return;
+
+        const sharedDuration = Math.max(pair[0].duration, pair[1].duration);
+        pair.forEach(function(video) {
+          video.playbackRate = Math.max(0.5, Math.min(2, video.duration / sharedDuration));
+          video.currentTime = 0;
+        });
+        ready = true;
+        pair.forEach(function(video) { video.play().catch(function() {}); });
+      }
+
+      pair.forEach(function(video) { video.addEventListener('loadedmetadata', prepare); });
+      if (pair.every(function(video) { return video.readyState >= 1; })) prepare();
+
+      function restart() {
+        if (!ready || resetting) return;
+        resetting = true;
+        pair.forEach(function(video) {
+          video.pause();
+          video.currentTime = 0;
+        });
+        requestAnimationFrame(function() {
+          Promise.allSettled(pair.map(function(video) { return video.play(); })).finally(function() {
+            resetting = false;
+          });
+        });
+      }
+
+      function sync() {
+        if (ready && !resetting) {
+          const beforeProgress = pair[0].currentTime / pair[0].duration;
+          const afterProgress = pair[1].currentTime / pair[1].duration;
+          if (beforeProgress >= 0.995 || afterProgress >= 0.995 || pair.some(function(video) { return video.ended; })) {
+            restart();
+          } else if (Math.abs(beforeProgress - afterProgress) > 0.025) {
+            pair[1].currentTime = beforeProgress * pair[1].duration;
+          }
+        }
+        requestAnimationFrame(sync);
+      }
+
+      requestAnimationFrame(sync);
+    });
+  })();
+</script>
 
 <script>
   (function quoteSuccessInit(){
