@@ -973,6 +973,7 @@ justify-content: center;
       border-radius: 17px;
       background: #101923;
       user-select: none;
+      touch-action: pan-y;
     }
 
     .daily-video-compare video {
@@ -1048,6 +1049,49 @@ justify-content: center;
       color: var(--white);
       font-size: 0.9rem;
       line-height: 1.45;
+    }
+
+
+    .daily-carousel-controls {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      gap: 13px;
+      margin-top: 16px;
+    }
+
+    .daily-carousel-arrow {
+      width: 44px;
+      height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(255,107,26,0.38);
+      border-radius: 50%;
+      background: rgba(255,107,26,0.11);
+      color: var(--orange);
+      font: inherit;
+      font-size: 1.35rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: background .2s, color .2s, transform .2s;
+    }
+
+    .daily-carousel-arrow:active {
+      background: var(--orange);
+      color: #fff;
+      transform: scale(.94);
+    }
+
+    .daily-carousel-hint {
+      color: var(--steel);
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .3px;
+    }
+
+    @media (max-width: 900px) {
+      .daily-carousel-controls { display: flex; }
     }
 
     @media (max-width: 900px) {
@@ -1148,6 +1192,12 @@ justify-content: center;
       <a class="daily-gallery-link" href="galeri.html">Tüm galeriyi gör →</a>
     </div>
     <div class="daily-video-grid" id="daily-video-grid" aria-live="polite"></div>
+
+    <div class="daily-carousel-controls" aria-label="Video kartları arasında geçiş">
+      <button class="daily-carousel-arrow" type="button" data-daily-prev aria-label="Önceki video kartı">←</button>
+      <span class="daily-carousel-hint">Kartlar arasında geç</span>
+      <button class="daily-carousel-arrow" type="button" data-daily-next aria-label="Sonraki video kartı">→</button>
+    </div>
   </div>
 
   <div class="services-grid">
@@ -1337,6 +1387,22 @@ justify-content: center;
       `;
     }).join('');
 
+    const previousButton = document.querySelector('[data-daily-prev]');
+    const nextButton = document.querySelector('[data-daily-next]');
+
+    function moveCards(direction) {
+      const firstCard = container.querySelector('.daily-video-card');
+      if (!firstCard) return;
+      const gap = parseFloat(getComputedStyle(container).gap) || 16;
+      container.scrollBy({
+        left: direction * (firstCard.getBoundingClientRect().width + gap),
+        behavior: 'smooth'
+      });
+    }
+
+    if (previousButton) previousButton.addEventListener('click', function() { moveCards(-1); });
+    if (nextButton) nextButton.addEventListener('click', function() { moveCards(1); });
+
     container.querySelectorAll('.daily-video-compare').forEach(function(compare) {
       const pair = Array.from(compare.querySelectorAll('video'));
       const afterLayer = compare.querySelector('.daily-video-after');
@@ -1356,8 +1422,9 @@ justify-content: center;
 
       compare.addEventListener('mousemove', function(event) { moveSlider(event.clientX); });
       compare.addEventListener('touchmove', function(event) {
+        if (event.cancelable) event.preventDefault();
         moveSlider(event.touches[0].clientX);
-      }, { passive: true });
+      }, { passive: false });
 
       pair.forEach(function(video) {
         video.muted = true;
