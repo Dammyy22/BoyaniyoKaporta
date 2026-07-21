@@ -116,24 +116,42 @@
     .hero-bg {
       position: absolute;
       inset: 0;
-      background:
-        linear-gradient(135deg, rgba(15,25,35,0.97) 0%, rgba(15,25,35,0.8) 50%, rgba(15,25,35,0.65) 100%),
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600'%3E%3Cdefs%3E%3CradialGradient id='g' cx='60%25' cy='50%25' r='50%25'%3E%3Cstop offset='0%25' stop-color='%23FF6B1A' stop-opacity='0.12'/%3E%3Cstop offset='100%25' stop-color='%230F1923' stop-opacity='0'/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect width='800' height='600' fill='%230F1923'/%3E%3Crect width='800' height='600' fill='url(%23g)'/%3E%3C/svg%3E");
+      background-image:
+        linear-gradient(90deg,
+          rgba(15,25,35,0.98) 0%,
+          rgba(15,25,35,0.93) 24%,
+          rgba(15,25,35,0.72) 46%,
+          rgba(15,25,35,0.30) 72%,
+          rgba(15,25,35,0.48) 100%
+        ),
+        linear-gradient(0deg,
+          rgba(15,25,35,0.72) 0%,
+          rgba(15,25,35,0.08) 42%,
+          rgba(15,25,35,0.26) 100%
+        ),
+        url("Gemini_Generated_Image_9d4v9p9d4v9p9d4v.png?v=20260721-1");
       background-size: cover;
-      background-position: center;
+      background-position: 58% center;
+      background-repeat: no-repeat;
+      transform: scale(1.015);
     }
 
-    .hero-bg::after {
-      content: '';
-      position: absolute;
-      right: -5%;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 60%;
-      height: 70%;
-      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 700 350'%3E%3Cpath d='M50 240 Q100 240 150 200 L200 160 Q250 130 320 125 L430 122 Q510 122 560 145 L620 175 Q660 195 670 230 L670 260 Q670 275 655 275 L640 275 A45 45 0 0 1 550 275 L200 275 A45 45 0 0 1 110 275 L50 275 Q30 275 30 255 Z' fill='%23FF6B1A' fill-opacity='0.06' stroke='%23FF6B1A' stroke-opacity='0.18' stroke-width='1.5'/%3E%3Ccircle cx='155' cy='275' r='38' fill='none' stroke='%23FF6B1A' stroke-opacity='0.2' stroke-width='1.5'/%3E%3Ccircle cx='595' cy='275' r='38' fill='none' stroke='%23FF6B1A' stroke-opacity='0.2' stroke-width='1.5'/%3E%3Cpath d='M205 155 L230 128 Q265 100 340 98 L420 98 Q480 98 515 120 L545 145' fill='none' stroke='%23FF6B1A' stroke-opacity='0.25' stroke-width='1'/%3E%3C/svg%3E") center/contain no-repeat;
-      opacity: 0.6;
-      pointer-events: none;
+    @media (max-width: 640px) {
+      .hero-bg {
+        background-image:
+          linear-gradient(90deg,
+            rgba(15,25,35,0.97) 0%,
+            rgba(15,25,35,0.87) 46%,
+            rgba(15,25,35,0.48) 100%
+          ),
+          linear-gradient(0deg,
+            rgba(15,25,35,0.82) 0%,
+            rgba(15,25,35,0.16) 48%,
+            rgba(15,25,35,0.42) 100%
+          ),
+          url("Gemini_Generated_Image_9d4v9p9d4v9p9d4v.png?v=20260721-1");
+        background-position: 64% center;
+      }
     }
 
     .hero-content {
@@ -155,7 +173,7 @@
       text-transform: uppercase;
       padding: 6px 14px;
       border-radius: 20px;
-      : 24px;
+      margin-bottom: 24px;
     }
 
     .hero-badge::before {
