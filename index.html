@@ -789,6 +789,22 @@ justify-content: center;
     @media (max-width: 900px) {
       #kasko > div { grid-template-columns: 1fr !important; }
     }
+  
+    /* ── EMAIL QUOTE FORM ── */
+    #teklif { background:var(--navy-mid); }
+    .quote-form { max-width:900px; margin:42px auto 0; padding:30px; background:var(--card-bg); border:1px solid rgba(255,255,255,.08); border-radius:12px; }
+    .form-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; }
+    .form-field { display:flex; flex-direction:column; gap:8px; }
+    .form-field.full { grid-column:1/-1; }
+    .form-field label { color:var(--cream); font-size:.82rem; font-weight:600; }
+    .form-field input,.form-field textarea { width:100%; border:1px solid rgba(255,255,255,.12); border-radius:7px; background:var(--navy); color:var(--white); font:inherit; padding:13px 14px; outline:none; }
+    .form-field textarea { min-height:125px; resize:vertical; }
+    .form-field input:focus,.form-field textarea:focus { border-color:var(--orange); box-shadow:0 0 0 3px rgba(255,107,26,.12); }
+    .file-note { color:var(--steel); font-size:.74rem; }
+    .quote-submit { margin-top:22px; border:0; cursor:pointer; }
+    .quote-success { display:none; max-width:900px; margin:22px auto 0; padding:16px 18px; border:1px solid rgba(111,222,143,.35); border-radius:8px; background:rgba(111,222,143,.08); color:#9aefb2; text-align:center; }
+    @media(max-width:640px){.quote-form{padding:22px 18px}.form-grid{grid-template-columns:1fr}.form-field.full{grid-column:auto}}
+
   </style>
 </head>
 <body>
@@ -806,7 +822,7 @@ justify-content: center;
     <a href="galeri.html">Öncesi/Sonrası Galerisi</a>
     <a href="#kasko">Kasko & Sigorta</a>
     <a href="#iletisim">İletişim</a>
-    <a href="https://wa.me/905073647021?text=Merhaba%2C+arac%C4%B1m%C4%B1n+hasar%C4%B1n%C4%B1+gidermek+i%C3%A7in+bilgi+almak+istiyorum." class="nav-cta" target="_blank" rel="noopener">Teklif Al</a>
+    <a href="#teklif" class="nav-cta">Teklif Al</a>
   </nav>
 
   <button class="hamburger" aria-label="Menüyü Aç/Kapat" onclick="document.querySelector('.mobile-nav').classList.toggle('open')">
@@ -901,6 +917,32 @@ justify-content: center;
   </div>
 </section>
 
+
+<section id="teklif" aria-labelledby="quote-title">
+  <div class="section-header">
+    <div class="section-label">Online Teklif</div>
+    <h2 class="section-title" id="quote-title">Fotoğraf Gönder, Teklif Al</h2>
+    <p class="section-sub">Aracınızdaki hasarı anlatın ve fotoğrafları ekleyin. Talebiniz doğrudan e-posta adresimize ulaşsın.</p>
+  </div>
+  <div class="quote-success" id="quote-success">Talebiniz gönderildi. En kısa sürede sizinle iletişime geçeceğiz.</div>
+  <form class="quote-form" action="https://formsubmit.co/damla.irak@outlook.com" method="POST" enctype="multipart/form-data">
+    <input type="hidden" name="_subject" value="Boyanıyo Kaporta – Yeni Teklif Talebi">
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_captcha" value="true">
+    <input type="hidden" name="_next" value="https://dammyy22.github.io/BoyaniyoKaporta/?teklif=alindi#teklif">
+    <div class="form-grid">
+      <div class="form-field"><label for="quote-name">Ad Soyad</label><input id="quote-name" name="Ad Soyad" type="text" autocomplete="name" required></div>
+      <div class="form-field"><label for="quote-phone">Telefon</label><input id="quote-phone" name="Telefon" type="tel" autocomplete="tel" inputmode="tel" required></div>
+      <div class="form-field full"><label for="quote-car">Araç Marka / Model</label><input id="quote-car" name="Araç Marka Model" type="text" placeholder="Örn. Renault Clio 2020" required></div>
+      <div class="form-field full"><label for="quote-damage">Hasar Açıklaması</label><textarea id="quote-damage" name="Hasar Açıklaması" placeholder="Hasarın nerede olduğunu ve yapılmasını istediğiniz işlemi yazın." required></textarea></div>
+      <div class="form-field"><label for="quote-photo-1">Hasar Fotoğrafı</label><input id="quote-photo-1" name="Hasar Fotoğrafı 1" type="file" accept="image/*" required></div>
+      <div class="form-field"><label for="quote-photo-2">Ek Fotoğraf</label><input id="quote-photo-2" name="Hasar Fotoğrafı 2" type="file" accept="image/*"></div>
+      <div class="form-field full"><label for="quote-photo-3">Ek Fotoğraf</label><input id="quote-photo-3" name="Hasar Fotoğrafı 3" type="file" accept="image/*"><span class="file-note">En az bir fotoğraf ekleyin. Büyük dosyaların gönderimi biraz sürebilir.</span></div>
+    </div>
+    <button class="btn-primary quote-submit" type="submit">E-posta ile Teklif İste</button>
+  </form>
+</section>
+
 <section id="iletisim" aria-labelledby="contact-title">
   <div class="section-header">
     <div class="section-label">İletişim & Konum</div>
@@ -956,5 +998,11 @@ justify-content: center;
   </a>
 </div>
 
+<script>
+  (function quoteSuccessInit(){
+    const notice=document.getElementById('quote-success');
+    if(new URLSearchParams(location.search).get('teklif')==='alindi'&&notice) notice.style.display='block';
+  })();
+</script>
 </body>
 </html>
