@@ -53,28 +53,58 @@
     .logo {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 11px;
+      padding: 6px 13px 6px 7px;
       text-decoration: none;
+      background: linear-gradient(90deg, rgba(255,107,26,0.12), rgba(255,255,255,0.025));
+      border: 1px solid rgba(255,107,26,0.22);
+      border-radius: 9px;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.22);
+      transition: border-color .2s, box-shadow .2s, transform .2s;
+    }
+
+    .logo:hover {
+      border-color: rgba(255,107,26,0.48);
+      box-shadow: 0 8px 28px rgba(0,0,0,0.30), 0 0 20px rgba(255,107,26,0.08);
+      transform: translateY(-1px);
     }
 
     .logo-icon {
-      width: 38px; height: 38px;
-      background: var(--orange);
-      border-radius: 6px;
+      width: 42px; height: 42px;
+      background: linear-gradient(145deg, #ff7b32, var(--orange-dark));
+      border-radius: 7px;
       display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 0 18px rgba(255,107,26,0.22);
     }
 
-    .logo-icon svg { width: 22px; height: 22px; fill: white; }
+    .logo-icon svg { width: 24px; height: 24px; fill: white; }
 
     .logo-text {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.5rem;
-      letter-spacing: 2px;
-      color: var(--white);
+      font-size: 1.82rem;
+      letter-spacing: 2.4px;
+      color: #fff;
       line-height: 1;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.55);
     }
 
-    .logo-text span { color: var(--orange); }
+    .logo-text span {
+      color: #ff7b32;
+      text-shadow: 0 0 16px rgba(255,107,26,0.20);
+    }
+
+    @media (max-width: 1050px) {
+      .logo { padding-right: 10px; }
+      .logo-text { font-size: 1.55rem; letter-spacing: 1.8px; }
+      nav { gap: 18px; }
+    }
+
+    @media (max-width: 640px) {
+      .logo { padding: 5px 10px 5px 6px; gap: 8px; }
+      .logo-icon { width: 36px; height: 36px; }
+      .logo-icon svg { width: 21px; height: 21px; }
+      .logo-text { font-size: 1.4rem; letter-spacing: 1.5px; }
+    }
 
     nav { display: flex; align-items: center; gap: 32px; }
 
